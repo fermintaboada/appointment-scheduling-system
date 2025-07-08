@@ -1,0 +1,110 @@
+/* -------------  Variables de color ------------- */
+:root {
+  --gray-bg: #2b2b2b;         
+  --gray-light: #f4f4f4;     
+  --green-main: #3fa674;     
+  --gold-accent: #d4af37;    
+  --kratos-red: #c62828;    
+}
+
+body {
+  background: linear-gradient(180deg, #202020 0%, #2e2e2e 100%);
+  color: #e1e1e1;        
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+/* -------------  NavBar ------------- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: var(--gray-bg);
+  border-bottom: 4px solid var(--green-main);
+}
+
+.navbar .brand {
+  flex: 0 0 25%;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--kratos-red);   
+}
+
+.nav-links {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #e1e1e1;
+  font-weight: 500;
+  transition: color 0.25s ease;
+}
+
+.nav-links a:hover {
+  color: var(--green-main);
+}
+
+/* -------------  Secciones ------------- */
+main section {
+  padding: 4rem 2rem;
+  margin-left: 3%;
+}
+
+main h2,
+main h3 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+main h2 {
+  font-size: clamp(1.6rem, 5vw, 2rem);
+  color: var(--green-main);
+}
+
+main h3 {
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  color: var(--gold-accent);
+}
+
+main p {
+  max-width: 65ch;
+  font-size: 1rem;
+  color: #d6d6d6;            /* un tono más suave que el texto global */
+}
+
+/* -------------  Carrusel ------------- */
+.carousel-section {
+  padding: 0;
+}
+
+.carousel-item img {
+  object-fit: cover;
+  height: 400px;
+}
+
+/* -------------  Footer ------------- */
+.footer {
+  background: var(--gray-bg);
+  color: #e1e1e1;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.875rem;
+  border-top: 4px solid var(--green-main);
+}
+
+/* Aplica sombra y efecto al logo Kratos */
+.kratos-logo {
+  font-size: 10px;
+  font-weight: 1000;
+  color: #aa1717;
+  text-shadow: 2px 2px 0 #000, 3px 3px 5px rgba(0, 0, 0, 0.7);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
