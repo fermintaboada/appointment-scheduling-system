@@ -1,6 +1,9 @@
-const suma = (a: number, b: number): number => {
-    return a + b;}
+import server from './server';
+import { PORT } from './config/env';
 
-suma(1, 2);
 
-console.log("Servidor listo 🚀");
+
+server.listen(PORT, () => {
+    console.log('Iniciando...');
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
