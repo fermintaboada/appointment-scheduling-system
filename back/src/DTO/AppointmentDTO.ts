@@ -1,4 +1,5 @@
 export interface scheduleAppointmentDTO {
     date: Date,
-    time: string
+    time: string,
+    userId: number
 }

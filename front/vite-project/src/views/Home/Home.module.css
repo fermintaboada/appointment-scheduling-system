@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.home {
+  background-color: #E0E0E5; /* gris claro, más tenue que el navbar */
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main {
+  flex: 1;
+  padding: 2rem 5%; /* margen horizontal de 5% */
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.section h1 {
+  color: #3CB371; /* verde brillante como el logo */
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.section p {
+  color: #333; /* gris oscuro para contraste */
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.image {
+  width: 90%; /* ocupa todo menos los márgenes */
+  margin: 0 auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.footer {
+  background-color: #9A9AA5; /* mismo tono que navbar */
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.footer p {
+  margin: 0.5rem 0;
+}

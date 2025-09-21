@@ -5,9 +5,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
+    "build:watch": "tsc -w",
     "start": "node dist/index.js",
     "dev": "nodemon",
-    "serve": "npm run build && npm start"
+    "serve": "npm run build && npm start",
+    "dt": "ts-node src/services/credentialService.ts"
   },
   "keywords": [],
   "author": "Fermin Taboada",
@@ -27,11 +29,16 @@
   },
   "dependencies": {
     "@eslint/create-config": "^1.10.0",
+    "@types/cors": "^2.8.19",
     "@typescript-eslint/eslint-plugin": "^8.40.0",
     "@typescript-eslint/parser": "^8.40.0",
     "axios": "^1.11.0",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
-    "morgan": "^1.10.1"
+    "morgan": "^1.10.1",
+    "pg": "^8.16.3",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.26"
   }
 }

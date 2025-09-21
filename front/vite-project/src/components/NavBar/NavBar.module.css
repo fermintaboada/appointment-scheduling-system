@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #C0C0C5; /* gris claro */
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* logo */
+.logo h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #3CB371; /* verde más claro y vivo */
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* contenedor de links */
+.links {
+  display: flex;
+  gap: 2rem;
+}
+
+/* estilo de cada link */
+.links span {
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #222; /* gris oscuro casi negro */
+  transition: color 0.3s ease;
+}
+
+.links span:hover {
+  color: #3CB371; /* mismo verde del título */
+}
