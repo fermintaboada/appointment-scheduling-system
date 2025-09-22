@@ -13,12 +13,10 @@ validateAllowAppointment: function (date: Date, time: string) {
     const appointmentDateArg = new Date(appointmentDate.getTime() - 3 * 60 * 60 * 1000);
     const nowArg = new Date(today.getTime() - 3 * 60 * 60 * 1000);
 
-    // No permitir fechas pasadas
     if (appointmentDateArg < nowArg) {
     throw new Error("No se pueden crear citas para fechas pasadas");
     }
 
-    // Diferencia de horas con la fecha actual
     const diffMilliSeconds = appointmentDateArg.getTime() - nowArg.getTime();
     const diffHours = diffMilliSeconds / (1000 * 60 * 60);
 
@@ -26,14 +24,11 @@ validateAllowAppointment: function (date: Date, time: string) {
     throw new Error("Las citas deben agendarse con más de 24 horas de antelación");
     }
 
-    // Validar fines de semana
     const dayOfWeek = appointmentDateArg.getUTCDay();
     if (dayOfWeek === 5 || dayOfWeek === 6) {
     throw new Error("No se pueden agendar citas los fines de semana");
     }
 
-    // Validar horario laboral chequear para hacer que se agende 18:00 inclusive
-    //if(hours >= 18 && minutes > 0) throw new Error("Las citas deben agendarse entre las 08:00 y 18:00")
     if (hours < 8 || hours > 17) {
     throw new Error("Las citas deben agendarse entre las 08:00 y 18:00");
     }
@@ -51,7 +46,7 @@ const appFound = await this.findOne({
     },
 })
 if (appFound) throw new Error( `La cita para el usuario con Id: ${userId} con fecha ${date} y hora ${time} ya existe y se encuentra activa`)
-
+    
 } 
 
 });

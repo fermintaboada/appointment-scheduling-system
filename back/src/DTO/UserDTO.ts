@@ -2,7 +2,7 @@ export interface userRegisterDTO {
     name: string;
     email: string;
     username: string;
-    birthDate: Date;
+    birthDate: string;
     nDni: number;
     password: string
 }

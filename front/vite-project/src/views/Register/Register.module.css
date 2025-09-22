@@ -1,0 +1,100 @@
+/* Fondo con imagen opacada */
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+  padding: 2rem;
+
+  background-image: url("https://i.pinimg.com/1200x/79/bf/b9/79bfb9fb0f89e530152ca87edc2d7de5.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Capa oscura encima de la imagen */
+.formContainer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  z-index: -1;
+}
+
+/* Título */
+.formTitle {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #d1e7dd; /* verde suave */
+  font-weight: 700;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Grupo de inputs */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Label */
+.formLabel {
+  margin-bottom: 0.5rem;
+  color: #f1f1f1;
+  font-size: 0.95rem;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Input */
+.formInput {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.formInput:focus {
+  border-color: #198754; /* verde fuerte */
+  box-shadow: 0 0 5px rgba(25, 135, 84, 0.6);
+}
+
+/* Mensajes de error */
+.errorLabel {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: #f87171; /* rojo suave */
+  font-family: "Poppins", sans-serif;
+}
+
+/* Botón */
+.formButton {
+  margin-top: 1.5rem;
+  padding: 0.9rem 1.5rem;
+  background-color: #198754; /* verde principal */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.formButton:hover:not(:disabled) {
+  background-color: #145c32;
+  transform: translateY(-2px);
+}
+
+.formButton:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}

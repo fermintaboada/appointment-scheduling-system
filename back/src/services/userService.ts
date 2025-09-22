@@ -23,7 +23,7 @@ export const registerUserService = async(user: userRegisterDTO):Promise <User> =
     const resultadoTrans =  appDataSource.transaction(async(entityManager)=>{
         const credential: Credential | undefined = await createCredential(entityManager,user.username, user.password) 
         const nuevoUsuario: User = entityManager.create(User,{
-        birthdate:new Date(user.birthDate),
+        birthDate:new Date(user.birthDate),
         email: user.email,
         name: user.name,
         nDni: user.nDni,

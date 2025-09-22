@@ -21,8 +21,9 @@ const getUserByIdService = (id) => __awaiter(void 0, void 0, void 0, function* (
     const userFound = yield data_source_1.UserModel.findOne({
         where: { id: id }, relations: ["appointments"]
     });
-    if (!userFound)
-        throw new Error("usuario con id ${id}no encontrado.");
+    if (!userFound) {
+        throw new Error(`usuario con id ${id} no encontrado.`);
+    }
     return userFound;
 });
 exports.getUserByIdService = getUserByIdService;
@@ -30,7 +31,7 @@ const registerUserService = (user) => __awaiter(void 0, void 0, void 0, function
     const resultadoTrans = data_source_1.appDataSource.transaction((entityManager) => __awaiter(void 0, void 0, void 0, function* () {
         const credential = yield (0, credentialService_1.createCredential)(entityManager, user.username, user.password);
         const nuevoUsuario = entityManager.create(User_entity_1.User, {
-            birthdate: new Date(user.birthDate),
+            birthDate: new Date(user.birthDate),
             email: user.email,
             name: user.name,
             nDni: user.nDni,

@@ -34,7 +34,7 @@ const getAppointmentByIdController = (req, res) => __awaiter(void 0, void 0, voi
     }
     catch (error) {
         res.status(404).json({
-            msg: error instanceof Error ? error.message : 'Error inesperado',
+            msg: error instanceof Error ? error.message : 'Error desconocido',
         });
     }
 });

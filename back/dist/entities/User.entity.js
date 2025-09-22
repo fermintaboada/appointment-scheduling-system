@@ -31,7 +31,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ type: "date", nullable: false }),
     __metadata("design:type", Date)
-], User.prototype, "birthdate", void 0);
+], User.prototype, "birthDate", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "int", nullable: false, unique: true }),
     __metadata("design:type", Number)
