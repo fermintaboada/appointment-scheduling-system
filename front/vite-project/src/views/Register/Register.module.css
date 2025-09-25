@@ -1,4 +1,4 @@
-/* Fondo con imagen opacada */
+
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@
   z-index: 1;
 }
 
-/* Capa oscura encima de la imagen */
+
 .formContainer::before {
   content: "";
   position: absolute;
@@ -24,17 +24,17 @@
   z-index: -1;
 }
 
-/* Título */
+
 .formTitle {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: #d1e7dd; /* verde suave */
+  color: #d1e7dd; 
   font-weight: 700;
   text-align: center;
   font-family: "Poppins", sans-serif;
 }
 
-/* Grupo de inputs */
+
 .formGroup {
   display: flex;
   flex-direction: column;
@@ -43,7 +43,7 @@
   max-width: 400px;
 }
 
-/* Label */
+
 .formLabel {
   margin-bottom: 0.5rem;
   color: #f1f1f1;
@@ -51,7 +51,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* Input */
 .formInput {
   padding: 0.8rem;
   border: 1px solid #ccc;
@@ -63,23 +62,23 @@
 }
 
 .formInput:focus {
-  border-color: #198754; /* verde fuerte */
+  border-color: #198754; 
   box-shadow: 0 0 5px rgba(25, 135, 84, 0.6);
 }
 
-/* Mensajes de error */
+
 .errorLabel {
   margin-top: 0.4rem;
   font-size: 0.85rem;
-  color: #f87171; /* rojo suave */
+  color: #f87171; 
   font-family: "Poppins", sans-serif;
 }
 
-/* Botón */
+
 .formButton {
   margin-top: 1.5rem;
   padding: 0.9rem 1.5rem;
-  background-color: #198754; /* verde principal */
+  background-color: #198754; 
   color: #fff;
   border: none;
   border-radius: 8px;

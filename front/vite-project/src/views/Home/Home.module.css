@@ -1,49 +1,93 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 .home {
-  background-color: #E0E0E5; /* gris claro, más tenue que el navbar */
-  min-height: 100vh;
   font-family: 'Poppins', sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  background-color: #f5f5f5;
 }
 
-.main {
+.hero {
+  height: 90vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45); 
+}
+
+.heroContent {
+  position: relative;
   flex: 1;
-  padding: 2rem 5%; /* margen horizontal de 5% */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+.heroContent h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.ctaButton {
+  background-color: #3CB371;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: #2e8b57;
 }
 
 .section {
-  margin-bottom: 3rem;
+  padding: 3rem 5%;
+  text-align: center;
 }
 
 .section h1 {
-  color: #3CB371; /* verde brillante como el logo */
+  color: #3CB371;
   font-weight: 700;
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .section p {
-  color: #333; /* gris oscuro para contraste */
+  color: #333;
   line-height: 1.6;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
 }
 
 .image {
-  width: 90%; /* ocupa todo menos los márgenes */
-  margin: 0 auto;
+  width: 100%;
+  height: auto;
   display: block;
+  margin: 0 auto;
   border-radius: 12px;
+  filter: brightness(0.85); /* filtro */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
+/* Footer */
 .footer {
-  background-color: #9A9AA5; /* mismo tono que navbar */
+  background-color: #222;
   color: #fff;
   text-align: center;
-  padding: 1.5rem;
+  padding: 2rem;
   font-size: 0.95rem;
 }
 

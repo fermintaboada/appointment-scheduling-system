@@ -1,5 +1,10 @@
 .contenedor {
   padding: 2rem;
+  min-height: 100vh;
+  background-image: url("https://i.pinimg.com/1200x/24/67/1c/24671c6b18fefcb8394e63c36ad36255.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .contenedorH1 {
@@ -9,19 +14,17 @@
 
 .contenedorH1 h1 {
   font-family: 'Poppins', sans-serif;
-  color: #3CB371; /* verde brillante */
+  color: #3CB371; 
   font-size: 2rem;
   font-weight: 700;
 }
 
 .containerTurns {
   display: flex;
-  flex-wrap: wrap; /* permite que bajen cuando no entran */
-  justify-content: center; /* centra las tarjetas */
-  gap: 1.5rem; /* espacio entre tarjetas */
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 1.5rem; 
 }
-
-/* Estilos para el loader */
 
 .inlineLoader {
   display: flex;
@@ -35,7 +38,7 @@
   width: 48px;
   height: 48px;
   border: 6px solid #e0e0e0;
-  border-top-color: #3CB371; /* verde */
+  border-top-color: #3CB371; 
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }

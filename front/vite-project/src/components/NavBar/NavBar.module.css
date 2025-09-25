@@ -1,28 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #C0C0C5; /* gris claro */
-  padding: 1rem 2rem;
+  background-color: #fff; 
+  padding: 1rem 3rem;
   position: sticky;
   top: 0;
   z-index: 100;
   font-family: 'Poppins', sans-serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); 
 }
 
-/* Logo */
 .logo h2 {
-  font-family: 'Poppins', sans-serif;
-  color: #3CB371; /* verde vivo */
+  color: #3CB371;
   font-weight: 700;
-  font-size: 1.6rem;
-  letter-spacing: 1px;
+  font-size: 1.8rem;
   margin: 0;
 }
 
-/* Links centrados */
 .links {
   display: flex;
   gap: 2rem;
@@ -33,15 +30,13 @@
   justify-content: center;
 }
 
-/* Estilo de cada link */
 .navLink {
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #222; /* gris oscuro */
-  transition: all 0.3s ease;
   text-decoration: none;
-  padding: 0.2rem 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #222;
+  transition: all 0.3s ease;
+  padding-bottom: 0.2rem;
   border-bottom: 2px solid transparent;
 }
 
@@ -55,7 +50,7 @@
   border-bottom: 2px solid #3CB371;
 }
 
-/* Logout */
+
 .logoutContainer {
   display: flex;
   align-items: center;
@@ -64,10 +59,10 @@
 .logoutBtn {
   background-color: transparent;
   border: 2px solid #3CB371;
-  color: #3CB371;
-  padding: 0.4rem 1.2rem;
-  border-radius: 999px; /* píldora */
-  font-size: 0.9rem;
+  color: #2e8b57; 
+  padding: 0.45rem 1.4rem;
+  border-radius: 999px;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;

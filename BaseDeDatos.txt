@@ -1,0 +1,59 @@
+Esquema inicial de la base de datos
+Vamos a usar una base de datos relacional o no relacional según el stack (por ahora lo diseñamos agnóstico). En este punto definimos las entidades mínimas: Usuarios, Turnos y Credenciales, y agregamos algunos detalles para los extras.
+
+🧱 Entidad: User
+id (string / ObjectId / UUID): identificador único
+
+
+fullName (string): nombre completo
+
+
+email (string, único): email del usuario
+
+
+profilePicture (string - URL, opcional): link a la imagen de perfil
+
+
+createdAt (date): fecha de creación del usuario
+
+
+
+🔐 Entidad: Credential
+id (string / ObjectId / UUID): identificador único
+
+
+userId (foreign key a User): referencia al usuario
+
+
+passwordHash (string): hash de la contraseña
+
+
+lastLogin (date): última vez que inició sesión
+
+
+Nota: también podríamos incluir las credenciales directamente en User, pero separarlas es una buena práctica de seguridad y escalabilidad.
+
+📅 Entidad: Appointment (o Turno)
+id (string / ObjectId / UUID): identificador único
+
+
+userId (foreign key a User): referencia al usuario que reservó
+
+
+date (date): fecha del turno
+
+
+time (string o time): hora del turno (ej: "10:00")
+
+
+status (string): estado del turno ("reserved", "cancelled")
+
+
+createdAt (date): cuándo se reservó
+
+
+⚠ Validaciones importantes:
+Los turnos no pueden ser en fin de semana.
+
+
+

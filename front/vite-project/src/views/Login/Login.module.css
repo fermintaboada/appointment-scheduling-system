@@ -22,7 +22,7 @@
     z-index: -1;
 }
 
-/* Título del formulario */
+
 .formTitle {
     font-size: 2rem;
     margin-bottom: 1.5rem;
@@ -32,7 +32,7 @@
     font-family: "Poppins", sans-serif;
 }
 
-/* Grupo de input */
+
 .formGroup {
     display: flex;
     flex-direction: column;
@@ -41,7 +41,7 @@
     max-width: 400px;
 }
 
-/* Label */
+
 .formLabel {
     margin-bottom: 0.5rem;
     color: #f1f1f1;
@@ -49,7 +49,7 @@
     font-family: "Poppins", sans-serif;
 }
 
-/* Input */
+
 .formInput {
     padding: 0.8rem;
     border: 1px solid #ccc;
@@ -73,7 +73,7 @@
     font-family: "Poppins", sans-serif;
 }
 
-/* Botón */
+
 .formButton {
     margin-top: 1rem;
     padding: 0.9rem 1.5rem;

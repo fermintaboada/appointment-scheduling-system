@@ -1,0 +1,38 @@
+PLAN DEL TRABAJO
+
+✅ 1. User Stories (Historias de Usuario)
+Estas historias describen funcionalidades del sistema desde la perspectiva de un usuario. Las redactamos siguiendo la fórmula:
+"Como [tipo de usuario], quiero [objetivo] para [beneficio]"
+
+📌 Historias Principales
+Registro y autenticación
+
+
+Como usuario nuevo, quiero poder registrarme con mis datos para crear una cuenta y empezar a usar la aplicación.
+
+
+Como usuario registrado, quiero poder iniciar sesión con mis credenciales para acceder a mis turnos y agendar nuevos.
+como usuario quiero poder cerrar sesión.
+
+
+Gestión de turnos
+
+
+Como usuario autenticado, quiero poder ver un calendario con los horarios disponibles para sacar un turno.
+
+
+Como usuario autenticado, quiero agendar un turno en una fecha y horario disponible dentro del horario de atención del gimnasio, excluyendo fines de semana.
+Como usuario autenticado, quiero poder ver un listado de los turnos que ya tengo agendados.
+
+
+Como usuario autenticado, quiero poder cancelar un turno que ya tengo agendado, siempre y cuando no sea el mismo día.
+como usuario no puedo sacar dos turnos en el mismo día. 
+
+
+Extras (extra credit)
+
+
+Como usuario, quiero recibir un correo electrónico cuando reservo o cancelo un turno para tener un comprobante.
+
+
+Como usuario, quiero poder subir una foto de perfil a mi cuenta para personalizar mi perfil.

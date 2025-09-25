@@ -1,0 +1,46 @@
+.about {
+    background-color: #f5f5f5;
+    font-family: 'Poppins', sans-serif;
+}
+
+.heroSection {
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+}
+
+.heroSection img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.85);
+}
+
+.section {
+    margin: 3rem auto;
+    text-align: center;
+    max-width: 1200px;
+    padding: 1rem;
+}
+
+.section h1 {
+    color: #3CB371;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.section p {
+    color: #333;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.image {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    filter: brightness(0.9);
+}
