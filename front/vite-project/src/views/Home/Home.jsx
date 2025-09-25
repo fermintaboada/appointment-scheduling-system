@@ -4,7 +4,6 @@ import styles from "./Home.module.css";
 function Home() {
 return (
     <div className={styles.home}>
-    <NavBar />
 
     <main className={styles.main}>
         <section className={styles.section}>

@@ -12,31 +12,68 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* logo */
+/* Logo */
 .logo h2 {
   font-family: 'Poppins', sans-serif;
-  color: #3CB371; /* verde más claro y vivo */
+  color: #3CB371; /* verde vivo */
   font-weight: 700;
   font-size: 1.6rem;
   letter-spacing: 1px;
   margin: 0;
 }
 
-/* contenedor de links */
+/* Links centrados */
 .links {
   display: flex;
   gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  justify-content: center;
 }
 
-/* estilo de cada link */
-.links span {
+/* Estilo de cada link */
+.navLink {
   cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
-  color: #222; /* gris oscuro casi negro */
-  transition: color 0.3s ease;
+  color: #222; /* gris oscuro */
+  transition: all 0.3s ease;
+  text-decoration: none;
+  padding: 0.2rem 0;
+  border-bottom: 2px solid transparent;
 }
 
-.links span:hover {
-  color: #3CB371; /* mismo verde del título */
+.navLink:hover {
+  color: #3CB371;
+  border-bottom: 2px solid #3CB371;
+}
+
+.active {
+  color: #3CB371;
+  border-bottom: 2px solid #3CB371;
+}
+
+/* Logout */
+.logoutContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logoutBtn {
+  background-color: transparent;
+  border: 2px solid #3CB371;
+  color: #3CB371;
+  padding: 0.4rem 1.2rem;
+  border-radius: 999px; /* píldora */
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logoutBtn:hover {
+  background-color: #3CB371;
+  color: white;
 }

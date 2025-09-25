@@ -1,18 +1,16 @@
-import { useState, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useContext } from "react";
 import Turno from "../../components/Turno/Turno";
 import styles from "./MisTurnos.module.css";
-import axios from "axios";
+import { UsersContext } from "../../context/UserContext";
+
 
 function MisTurnos() {
-  const [app, setApp] = useState([])
+  const { getUserAppointments, userAppointments } = useContext(UsersContext);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/appointments')
-      .then((data)=>{
-        setApp(data.data.data)
-      })
-      .catch(err => console.log(err))
-  }, [])
+    getUserAppointments();
+  }, []);
 
   return (
     <div className={styles.contenedor}>
@@ -21,19 +19,17 @@ function MisTurnos() {
       </div>
 
       <div className={styles.containerTurns}>
-        {app.length > 0 ? (
-          app.map((app) => (
-            <Turno
+        { userAppointments?.length > 0 ?  userAppointments.map((app) => {
+          return <Turno
               key={app.id}
               id={app.id}
               date={app.date}
               time={app.time}
               status={app.status}
             />
-          ))
-        ) : <h1>No hay turnos para mostrar</h1>
+        }) : <h1>No hay turnos para mostrar</h1>
         }
-      </div> 
+      </div>
     </div>
   );
 }

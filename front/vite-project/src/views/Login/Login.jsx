@@ -1,11 +1,15 @@
 import { useFormik } from 'formik';
 import styles from './Login.module.css';
 import { loginFormValidates } from '../../helpers/validates';
-import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { UsersContext } from '../../context/UserContext';
+
 
 function Login(){
 
+    const {loginUser} = useContext(UsersContext)
     const formik = useFormik({
         initialValues: {
             username: "",
@@ -17,15 +21,14 @@ function Login(){
         password: "La contraseña es requerida"
     },
     onSubmit: (values) => {
-        axios.post("http://localhost:3000/users/login", values)
+        loginUser(values)
         .then((res) => {
             if(res.status === 200){
                 Swal.fire({
                     icon: 'success',
                     title: "Usuario logueado correctamente"
                 })
-            }
-            localStorage.setItem("user", JSON.stringify(res.data.user))
+            }           
         })
         .catch((err) => {
             if(err.status === 400){
@@ -88,6 +91,10 @@ function Login(){
     >
         Submit
     </button>
+    <br/>
+    <label className={styles.registerLabel}>
+        No tienes cuenta? <Link to="/register"> Registrate</Link>
+    </label>
     </form>
 
     )
