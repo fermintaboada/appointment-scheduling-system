@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import Turno from "../../components/Turno/Turno";
 import styles from "./MisTurnos.module.css";
 import { UsersContext } from "../../context/UserContext";
@@ -7,9 +8,10 @@ import { UsersContext } from "../../context/UserContext";
 
 function MisTurnos() {
   const { getUserAppointments, userAppointments } = useContext(UsersContext);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getUserAppointments();
+    getUserAppointments().finally(() => setLoading(false));
   }, []);
 
   return (
@@ -18,18 +20,31 @@ function MisTurnos() {
         <h1>Mis Turnos</h1>
       </div>
 
-      <div className={styles.containerTurns}>
-        { userAppointments?.length > 0 ?  userAppointments.map((app) => {
-          return <Turno
+      {loading ? (
+        <div className={styles.inlineLoader}>
+          <div className={styles.spinner} />
+          <p className={styles.loadingText}>Cargando turnos...</p>
+        </div>
+      ) : (
+        <div className={styles.containerTurns}>
+          {userAppointments?.length > 0 ? userAppointments.map((app) => (
+            <Turno
               key={app.id}
               id={app.id}
               date={app.date}
               time={app.time}
               status={app.status}
             />
-        }) : <h1>No hay turnos para mostrar</h1>
-        }
-      </div>
+          )) : (
+            <div className={styles.emptyState}>
+              <p>No tenés turnos agendados aún.</p>
+              <Link to="/agendarturno" className={styles.emptyStateBtn}>
+                Agendar un turno
+              </Link>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

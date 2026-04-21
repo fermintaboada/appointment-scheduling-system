@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
 
 .home {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f5f5f5;
+  font-family: 'DM Sans', sans-serif;
+  background-color: #F4F1EC;
 }
 
 .hero {
@@ -18,7 +18,11 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45); 
+  background: linear-gradient(
+    to bottom,
+    rgba(28, 43, 26, 0.35) 0%,
+    rgba(28, 43, 26, 0.65) 100%
+  );
 }
 
 .heroContent {
@@ -29,47 +33,71 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: white;
+  color: #F9F6F0;
   z-index: 2;
 }
 
 .heroContent h1 {
-  font-size: 3rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.8rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+.heroSubtitle {
+  font-size: 1.15rem;
+  color: rgba(249, 246, 240, 0.85);
+  margin-bottom: 2rem;
+  max-width: 520px;
+  line-height: 1.65;
+  font-weight: 400;
 }
 
 .ctaButton {
-  background-color: #3CB371;
-  color: white;
-  padding: 0.75rem 2rem;
+  background-color: #C8A96E;
+  color: #1C2B1A;
+  padding: 0.85rem 2.4rem;
   border-radius: 999px;
   text-decoration: none;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(200, 169, 110, 0.35);
 }
 
 .ctaButton:hover {
-  background-color: #2e8b57;
+  background-color: #b8945a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(200, 169, 110, 0.45);
 }
 
 .section {
-  padding: 3rem 5%;
+  padding: 4rem 5%;
   text-align: center;
 }
 
 .section h1 {
-  color: #3CB371;
+  font-family: 'Cormorant Garamond', serif;
+  color: #2D5016;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 2.4rem;
   margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
 }
 
 .section p {
-  color: #333;
-  line-height: 1.6;
-  font-size: 1.1rem;
+  color: #4A4A3A;
+  line-height: 1.8;
+  font-size: 1.05rem;
   margin-bottom: 1.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .image {
@@ -77,20 +105,110 @@
   height: auto;
   display: block;
   margin: 0 auto;
-  border-radius: 12px;
-  filter: brightness(0.85); /* filtro */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 14px;
+  filter: brightness(0.88);
+  box-shadow: 0 6px 24px rgba(45, 80, 22, 0.18);
 }
 
-/* Footer */
 .footer {
-  background-color: #222;
-  color: #fff;
-  text-align: center;
-  padding: 2rem;
-  font-size: 0.95rem;
+  background-color: #1C2B1A;
+  font-family: 'DM Sans', sans-serif;
 }
 
-.footer p {
-  margin: 0.5rem 0;
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 5% 3rem;
+}
+
+.footerLogo {
+  font-family: 'Cormorant Garamond', serif;
+  color: #C8A96E;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.03em;
+}
+
+.footerTagline {
+  color: rgba(244, 241, 236, 0.6);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 220px;
+}
+
+.footerHeading {
+  font-family: 'DM Sans', sans-serif;
+  color: #C8A96E;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 1.2rem;
+}
+
+.footerList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.footerList li {
+  color: rgba(244, 241, 236, 0.7);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.footerLabel {
+  color: rgba(244, 241, 236, 0.4);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.footerLink {
+  color: rgba(244, 241, 236, 0.7);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.footerLink:hover {
+  color: #C8A96E;
+}
+
+.footerBottom {
+  border-top: 1px solid rgba(200, 169, 110, 0.15);
+  text-align: center;
+  padding: 1.5rem 5%;
+}
+
+.footerBottom p {
+  color: rgba(244, 241, 236, 0.35);
+  font-size: 0.82rem;
+  margin: 0;
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 768px) {
+  .footerGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 3rem 5% 2rem;
+  }
+
+  .footerTagline {
+    max-width: 100%;
+  }
 }

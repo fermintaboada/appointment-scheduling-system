@@ -122,7 +122,7 @@ function Register() {
       </div>
 
       <div className={styles.formGroup}>
-        <label className={styles.formLabel}>nDni:</label>
+        <label className={styles.formLabel}>N° de DNI:</label>
         <input
           className={styles.formInput}
           type="text"

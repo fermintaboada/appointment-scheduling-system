@@ -1,19 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
 
 .appointmentCard {
-  background-color: #9A9AA5; 
-  border-radius: 12px;
-  padding: 1.5rem;
+  background: rgba(28, 43, 26, 0.55);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(200, 169, 110, 0.30);
+  border-radius: 16px;
+  padding: 1.6rem;
   margin: 0.5rem;
-  width: 280px; 
-  font-family: 'Poppins', sans-serif;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 280px;
+  font-family: 'DM Sans', sans-serif;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .appointmentCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  border-color: rgba(200, 169, 110, 0.55);
 }
 
 .appointmentHeader {
@@ -21,64 +24,78 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(200, 169, 110, 0.2);
+  padding-bottom: 0.8rem;
 }
 
 .appointmentHeader h3 {
-  color: #fff; 
-  font-size: 1.2rem;
+  font-family: 'Cormorant Garamond', serif;
+  color: #F4F1EC;
+  font-size: 1.25rem;
   font-weight: 600;
   margin: 0;
+  letter-spacing: 0.02em;
 }
 
 .statusActive {
-  background-color: #3CB371; 
-  color: white;
-  padding: 0.3rem 0.8rem;
+  background-color: #4A7C3F;
+  color: #F4F1EC;
+  padding: 0.3rem 0.85rem;
   border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .statusInactive {
-  background-color: #e74c3c; 
-  color: white;
-  padding: 0.3rem 0.8rem;
+  background-color: rgba(180, 60, 60, 0.75);
+  color: #F9F6F0;
+  padding: 0.3rem 0.85rem;
   border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .appointmentDetails p {
-  margin: 0.4rem 0;
-  color: #fff; 
-  font-size: 0.95rem;
+  margin: 0.45rem 0;
+  color: rgba(244, 241, 236, 0.85);
+  font-size: 0.9rem;
 }
 
 .appointmentDetails strong {
-  color: #f0f0f0;
+  color: #C8A96E;
+  font-weight: 600;
 }
 
 .cancelButton {
   display: block;
-  margin: 1rem auto 0 auto; 
-  padding: 0.6rem 1.2rem;
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
+  margin: 1.2rem auto 0 auto;
+  padding: 0.6rem 1.4rem;
+  background-color: transparent;
+  color: #f4a0a0;
+  border: 1.5px solid rgba(244, 100, 100, 0.6);
   border-radius: 8px;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .cancelButton:hover {
-  background-color: #e60000;
-  transform: scale(1.05);
+  background-color: rgba(220, 50, 50, 0.75);
+  border-color: transparent;
+  color: #fff;
 }
 
 .disabled {
-  background-color: #bbb !important;
+  background-color: transparent !important;
+  border-color: rgba(150, 150, 140, 0.3) !important;
+  color: rgba(249, 246, 240, 0.3) !important;
   cursor: not-allowed;
-  transform: none;
 }

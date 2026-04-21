@@ -1,13 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
 
 .formContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   min-height: 100vh;
   padding: 2rem;
-
   background-image: url("https://i.pinimg.com/1200x/79/bf/b9/79bfb9fb0f89e530152ca87edc2d7de5.jpg");
   background-size: cover;
   background-position: center;
@@ -15,92 +14,119 @@
   z-index: 1;
 }
 
-
 .formContainer::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.55);
+  background: linear-gradient(
+    135deg,
+    rgba(28, 43, 26, 0.72) 0%,
+    rgba(45, 80, 22, 0.60) 100%
+  );
   z-index: -1;
 }
 
-
 .formTitle {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: #d1e7dd; 
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  margin-bottom: 1.8rem;
+  color: #F4F1EC;
   font-weight: 700;
   text-align: center;
-  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
-
 
 .formGroup {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
   width: 100%;
   max-width: 400px;
 }
 
-
 .formLabel {
-  margin-bottom: 0.5rem;
-  color: #f1f1f1;
-  font-size: 0.95rem;
-  font-family: "Poppins", sans-serif;
+  margin-bottom: 0.45rem;
+  color: #C8A96E;
+  font-size: 0.8rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .formInput {
-  padding: 0.8rem;
-  border: 1px solid #ccc;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(200, 169, 110, 0.4);
   border-radius: 8px;
   outline: none;
-  font-size: 1rem;
-  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  font-family: 'DM Sans', sans-serif;
+  background: rgba(244, 241, 236, 0.12);
+  color: #F9F6F0;
   transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.formInput::placeholder {
+  color: rgba(249, 246, 240, 0.45);
 }
 
 .formInput:focus {
-  border-color: #198754; 
-  box-shadow: 0 0 5px rgba(25, 135, 84, 0.6);
+  border-color: #C8A96E;
+  background: rgba(244, 241, 236, 0.18);
+  box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.2);
 }
-
 
 .errorLabel {
   margin-top: 0.4rem;
-  font-size: 0.85rem;
-  color: #f87171; 
-  font-family: "Poppins", sans-serif;
+  font-size: 0.82rem;
+  color: #f4a0a0;
+  font-family: 'DM Sans', sans-serif;
 }
 
-
 .formButton {
-  margin-top: 1.5rem;
-  padding: 0.9rem 1.5rem;
-  background-color: #198754; 
-  color: #fff;
+  margin-top: 1.2rem;
+  padding: 0.95rem 1.5rem;
+  background-color: #C8A96E;
+  color: #1C2B1A;
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
-  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(200, 169, 110, 0.3);
 }
 
 .formButton:hover:not(:disabled) {
-  background-color: #145c32;
+  background-color: #b8945a;
   transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(200, 169, 110, 0.4);
 }
 
 .formButton:disabled {
-  background-color: #6c757d;
+  background-color: rgba(150, 150, 140, 0.5);
+  color: rgba(249, 246, 240, 0.5);
   cursor: not-allowed;
 }
 
 .loginLabel {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: #f1f1f1;
-  font-family: "Poppins", sans-serif;
+  margin-top: 1.2rem;
+  font-size: 0.88rem;
+  color: rgba(249, 246, 240, 0.75);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.loginLabel a {
+  color: #C8A96E;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.loginLabel a:hover {
+  text-decoration: underline;
 }

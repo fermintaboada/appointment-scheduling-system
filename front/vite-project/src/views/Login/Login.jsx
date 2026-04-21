@@ -54,6 +54,8 @@ function Login(){
         name="username"
         placeholder="Tu nombre de usuario"
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.username}
         />
         {formik.errors.username && formik.errors.username ? (
         <label className={styles.errorLabel}>
@@ -89,7 +91,7 @@ function Login(){
         !formik.values.password
     }
     >
-        Submit
+        Iniciar Sesión
     </button>
     <br/>
     <label className={styles.registerLabel}>

@@ -13,7 +13,8 @@ return (
     >
         
         <div className={styles.heroContent}>
-        <h1>// Las mejores instalaciones del país...</h1>
+        <h1>Las mejores instalaciones del país</h1>
+        <p className={styles.heroSubtitle}>Reservá tu turno en el campo y viví una experiencia única rodeado de naturaleza</p>
         <Link to="/agendarturno" className={styles.ctaButton}>
             Saca tu turno
         </Link>
@@ -22,6 +23,10 @@ return (
 
     <section className={styles.section}>
         <h1>Nuestro Campo</h1>
+        <p>
+            18 hoyos de nivel internacional diseñados entre bosques y lagos naturales.
+            Un desafío para todos los niveles, desde el jugador ocasional hasta el competidor experimentado.
+        </p>
         <img
             src="https://i.pinimg.com/1200x/2d/9d/93/2d9d93947cb08f1d771e7c6f1b0a4f68.jpg"
             alt="Nuestro campo"
@@ -44,13 +49,36 @@ return (
     </section>
 
     <footer className={styles.footer}>
-        <p>
-        Turnos disponibles de <strong>Lunes a Viernes de 8:00 a 18:00hs</strong>.
-        <br /> Fines de semana son de competición, por lo que no abrimos al público.
-        </p>
-        <p>
-        <span>Driving Range abierto toda la semana</span>
-        </p>
+        <div className={styles.footerGrid}>
+            <div className={styles.footerBrand}>
+                <h3 className={styles.footerLogo}>Q-Golf</h3>
+                <p className={styles.footerTagline}>
+                    Una experiencia de juego única, rodeada de naturaleza.
+                </p>
+            </div>
+
+            <div className={styles.footerCol}>
+                <h4 className={styles.footerHeading}>Horarios</h4>
+                <ul className={styles.footerList}>
+                    <li><span className={styles.footerLabel}>Campo</span>Lun – Vie · 08:00 a 18:00 hs</li>
+                    <li><span className={styles.footerLabel}>Driving Range</span>Todos los días · 08:00 a 20:00 hs</li>
+                    <li><span className={styles.footerLabel}>Fines de semana</span>Solo competición</li>
+                </ul>
+            </div>
+
+            <div className={styles.footerCol}>
+                <h4 className={styles.footerHeading}>Accesos rápidos</h4>
+                <ul className={styles.footerList}>
+                    <li><a href="/agendarturno" className={styles.footerLink}>Agendar turno</a></li>
+                    <li><a href="/misturnos" className={styles.footerLink}>Mis turnos</a></li>
+                    <li><a href="/about" className={styles.footerLink}>Instalaciones</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div className={styles.footerBottom}>
+            <p>© {new Date().getFullYear()} Q-Golf · Todos los derechos reservados</p>
+        </div>
     </footer>
     </div>
 );
