@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import Turno from "../../components/Turno/Turno";
+import Turno from "../../components/turno/Turno";
 import styles from "./MisTurnos.module.css";
 import { UsersContext } from "../../context/UserContext";
 
