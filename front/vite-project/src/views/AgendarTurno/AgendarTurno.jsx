@@ -1,6 +1,7 @@
 import { useFormik } from "formik";
 import { dateTimeValidates } from "../../helpers/validates";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { UsersContext } from "../../context/UserContext";
 import Swal from "sweetalert2";
 import Styles from "./AgendarTurno.module.css";
@@ -13,7 +14,7 @@ const POLITICA = [
 ];
 
 const AgendarTurno = () => {
-  const { createUserApp } = useContext(UsersContext);
+  const { createUserApp, isLogged } = useContext(UsersContext);
 
   const formik = useFormik({
     initialValues: { date: "", time: "" },
@@ -33,6 +34,23 @@ const AgendarTurno = () => {
       }
     },
   });
+
+  if (!isLogged) {
+    return (
+      <div className={Styles.container}>
+        <h1 className={Styles.title}>Agendar Turno</h1>
+        <div className={Styles.loginPromptCard}>
+          <p className={Styles.loginPromptText}>
+            Necesitás una cuenta para reservar un turno en Q-Golf.
+          </p>
+          <div className={Styles.loginPromptActions}>
+            <Link to="/login" className={Styles.loginPromptBtn}>Iniciar sesión</Link>
+            <Link to="/register" className={Styles.loginPromptSecondary}>Registrarse</Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={Styles.container}>

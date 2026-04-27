@@ -107,6 +107,63 @@
   outline-offset: 3px;
 }
 
+.loginPrompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 2.5rem 2rem;
+  background: var(--c-cream-light);
+  border-radius: 14px;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+
+.loginPromptText {
+  margin: 0;
+  color: var(--c-text-body);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.loginPromptActions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.loginPromptSecondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.8rem;
+  min-height: 44px;
+  background-color: transparent;
+  color: var(--c-green-dark);
+  border: 1.5px solid var(--c-green-dark);
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.loginPromptSecondary:hover {
+  background-color: var(--c-green-dark);
+  color: var(--c-cream);
+}
+
+.loginPromptSecondary:focus-visible {
+  outline: 2px solid var(--c-gold);
+  outline-offset: 3px;
+}
+
 @media (max-width: 480px) {
   .contenedorH1 h1 {
     font-size: 2.2rem;

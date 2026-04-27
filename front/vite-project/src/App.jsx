@@ -5,7 +5,7 @@ import MisTurnos from "./views/MisTurnos/MisTurnos";
 import Register from "./views/Register/Register";
 import NavBar from "./components/NavBar/NavBar";
 import AgendarTurno from "./views/AgendarTurno/AgendarTurno.jsx";
-import About from "./views/About/About.jsx";   
+import About from "./views/About/About.jsx";
 import { useContext, useEffect, useState } from "react";
 import { UsersContext } from "./context/UserContext";
 import NotFound from "./components/notFound/NotFound";
@@ -17,48 +17,33 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    const validRoutes = ["/", "/login", "/register", "/misturnos", "/agendarturno", "/about"]; 
+    const validRoutes = ["/", "/login", "/register", "/misturnos", "/agendarturno", "/about"];
     const currentPath = location.pathname.toLowerCase();
-
-    if (!validRoutes.includes(currentPath)) {
-      setIsNotFound(true);
-    } else {
-      setIsNotFound(false);
-    }
-
-    if (!isLogged && currentPath !== "/login" && currentPath !== "/register") {
-      navigate("/login");
-    }
+    setIsNotFound(!validRoutes.includes(currentPath));
 
     if (isLogged && (currentPath === "/login" || currentPath === "/register")) {
       navigate("/");
     }
   }, [isLogged, navigate, location.pathname]);
 
+  const isAuthPage = ["/login", "/register"].includes(location.pathname.toLowerCase());
+
   return (
     <>
-      {!isLogged ? (
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      ) : (
-        <>
-          {!isNotFound && (
-            <header>
-              <NavBar />
-            </header>
-          )}
-
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/misturnos" element={<MisTurnos />} />
-            <Route path="/agendarturno" element={<AgendarTurno />} />
-            <Route path="/about" element={<About />} /> 
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </>
+      {!isAuthPage && !isNotFound && (
+        <header>
+          <NavBar />
+        </header>
       )}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/misturnos" element={<MisTurnos />} />
+        <Route path="/agendarturno" element={<AgendarTurno />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   );
 }

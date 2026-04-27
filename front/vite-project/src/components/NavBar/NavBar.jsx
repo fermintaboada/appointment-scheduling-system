@@ -13,7 +13,7 @@ const NAV_LINKS = [
 ];
 
 function NavBar() {
-  const { logOutUser } = useContext(UsersContext);
+  const { logOutUser, isLogged } = useContext(UsersContext);
   const navigate = useNavigate();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -65,9 +65,16 @@ function NavBar() {
         ))}
       </ul>
 
-      <div className={styles.desktopLogout}>
-        <button className={styles.logoutBtn} onClick={handleLogout}>Salir</button>
-      </div>
+      {isLogged ? (
+        <div className={styles.desktopLogout}>
+          <button className={styles.logoutBtn} onClick={handleLogout}>Salir</button>
+        </div>
+      ) : (
+        <div className={styles.desktopAuth}>
+          <Link to="/login" className={styles.loginBtn}>Iniciar sesión</Link>
+          <Link to="/register" className={styles.registerBtn}>Registrarse</Link>
+        </div>
+      )}
 
       <button
         className={`${styles.hamburger} ${menuOpen ? styles.hamburgerOpen : ""}`}
@@ -101,13 +108,34 @@ function NavBar() {
           ))}
         </ul>
         <div className={styles.mobileDivider} />
-        <button
-          className={styles.mobileLogoutBtn}
-          onClick={handleLogout}
-          tabIndex={menuOpen ? 0 : -1}
-        >
-          Cerrar sesión
-        </button>
+        {isLogged ? (
+          <button
+            className={styles.mobileLogoutBtn}
+            onClick={handleLogout}
+            tabIndex={menuOpen ? 0 : -1}
+          >
+            Cerrar sesión
+          </button>
+        ) : (
+          <>
+            <Link
+              to="/login"
+              className={styles.mobileAuthLink}
+              onClick={closeMenu}
+              tabIndex={menuOpen ? 0 : -1}
+            >
+              Iniciar sesión
+            </Link>
+            <Link
+              to="/register"
+              className={styles.mobileRegisterLink}
+              onClick={closeMenu}
+              tabIndex={menuOpen ? 0 : -1}
+            >
+              Registrarse
+            </Link>
+          </>
+        )}
       </div>
 
       {menuOpen && (

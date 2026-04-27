@@ -188,6 +188,94 @@
   box-shadow: none;
 }
 
+.loginPromptCard {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  background: var(--c-cream-light);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+  animation: cardAppear 0.5s var(--ease-out-quart, cubic-bezier(0.25, 1, 0.5, 1)) both;
+}
+
+.loginPromptText {
+  margin: 0;
+  color: var(--c-text-body);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.loginPromptActions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.loginPromptBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.8rem;
+  min-height: 44px;
+  background-color: var(--c-gold);
+  color: var(--c-green-darkest);
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: var(--shadow-button);
+}
+
+.loginPromptBtn:hover {
+  background-color: var(--c-gold-hover);
+  transform: translateY(-2px);
+}
+
+.loginPromptBtn:focus-visible {
+  outline: 2px solid var(--c-gold);
+  outline-offset: 3px;
+}
+
+.loginPromptSecondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.8rem;
+  min-height: 44px;
+  background-color: transparent;
+  color: var(--c-green-dark);
+  border: 1.5px solid var(--c-green-dark);
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.loginPromptSecondary:hover {
+  background-color: var(--c-green-dark);
+  color: var(--c-cream);
+}
+
+.loginPromptSecondary:focus-visible {
+  outline: 2px solid var(--c-gold);
+  outline-offset: 3px;
+}
+
 @media (max-width: 480px) {
   .title {
     font-size: 2rem;

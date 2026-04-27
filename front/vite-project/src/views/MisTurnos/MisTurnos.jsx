@@ -7,12 +7,30 @@ import { UsersContext } from "../../context/UserContext";
 
 
 function MisTurnos() {
-  const { getUserAppointments, userAppointments } = useContext(UsersContext);
+  const { getUserAppointments, userAppointments, isLogged } = useContext(UsersContext);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!isLogged) { setLoading(false); return; }
     getUserAppointments().finally(() => setLoading(false));
   }, []);
+
+  if (!isLogged) {
+    return (
+      <div className={styles.contenedor}>
+        <div className={styles.contenedorH1}><h1>Mis Turnos</h1></div>
+        <div className={styles.loginPrompt}>
+          <p className={styles.loginPromptText}>
+            Necesitás iniciar sesión para ver y gestionar tus turnos.
+          </p>
+          <div className={styles.loginPromptActions}>
+            <Link to="/login" className={styles.emptyStateBtn}>Iniciar sesión</Link>
+            <Link to="/register" className={styles.loginPromptSecondary}>Registrarse</Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.contenedor}>

@@ -82,11 +82,71 @@
   border-bottom-color: var(--c-gold);
 }
 
-/* ── Desktop logout ── */
+/* ── Desktop logout / auth ── */
 .desktopLogout {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+}
+
+.desktopAuth {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.loginBtn {
+  color: var(--c-text-nav);
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.55rem 1rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.loginBtn:hover {
+  color: var(--c-green-mid);
+}
+
+.loginBtn:focus-visible {
+  outline: 2px solid var(--c-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.registerBtn {
+  background-color: var(--c-gold);
+  color: var(--c-green-darkest);
+  padding: 0.55rem 1.4rem;
+  min-height: 44px;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.registerBtn:hover {
+  background-color: var(--c-gold-hover);
+  transform: translateY(-1px);
+}
+
+.registerBtn:focus-visible {
+  outline: 2px solid var(--c-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 .logoutBtn {
@@ -234,6 +294,59 @@
   margin: 0.5rem 2rem;
 }
 
+.mobileAuthLink {
+  display: flex;
+  align-items: center;
+  padding: 0.9rem 2rem;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--c-text-nav);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  min-height: 52px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.mobileAuthLink:hover {
+  background-color: rgba(45, 80, 22, 0.05);
+  color: var(--c-green-mid);
+}
+
+.mobileAuthLink:focus-visible {
+  outline: 2px solid var(--c-gold);
+  outline-offset: -2px;
+}
+
+.mobileRegisterLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.25rem 2rem 0.75rem;
+  padding: 0.75rem 1.5rem;
+  min-height: 44px;
+  background-color: var(--c-gold);
+  color: var(--c-green-darkest);
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease;
+}
+
+.mobileRegisterLink:hover {
+  background-color: var(--c-gold-hover);
+}
+
+.mobileRegisterLink:focus-visible {
+  outline: 2px solid var(--c-gold);
+  outline-offset: 2px;
+}
+
 .mobileLogoutBtn {
   display: flex;
   align-items: center;
@@ -294,6 +407,10 @@
   }
 
   .desktopLogout {
+    display: none;
+  }
+
+  .desktopAuth {
     display: none;
   }
 
