@@ -15,3 +15,5 @@ export const DB_LOGGING: boolean = process.env.DB_LOGGING ? process.env.DB_LOGGI
 
 export const FRONTEND_URL: string = process.env.FRONTEND_URL ?? 'http://localhost:5173'
 
+export const RESEND_API_KEY: string = process.env.RESEND_API_KEY ?? ''
+

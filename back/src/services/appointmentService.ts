@@ -1,8 +1,9 @@
 import { Status} from "../interfaces/appointmentInterface";
 import { scheduleAppointmentDTO } from "../DTO/AppointmentDTO";
-import { getUserByIdService } from "./userService"; 
+import { getUserByIdService } from "./userService";
 import { Appointment } from "../entities/Appointment.entity";
 import { AppointmentModel } from "../repositories/Appointment.repository";
+import { sendAppointmentConfirmation } from "./emailService";
 
 
 
@@ -19,15 +20,20 @@ export const getAppByIdService = async(id: number): Promise <Appointment> => {
 }
 
 export const registerAppService = async (app: scheduleAppointmentDTO):Promise < Appointment | undefined> => {
-    await getUserByIdService(app.userId)
+    const user = await getUserByIdService(app.userId)
     AppointmentModel.validateAllowAppointment(app.date, app.time)
     await AppointmentModel.validateExistingApp(app.userId,app.date, app.time)
-    const newApp: Appointment = AppointmentModel.create ( {
+    const newApp: Appointment = AppointmentModel.create({
         date: app.date,
         time: app.time,
         user: { id: app.userId },
     })
-    return await AppointmentModel.save(newApp)
+    const saved = await AppointmentModel.save(newApp)
+
+    sendAppointmentConfirmation(user.email, user.name, app.date, app.time, saved.id)
+        .catch(err => console.error('Error enviando email de confirmación:', err))
+
+    return saved
 }
 
 export const cancelStatusAppService = async (id: number) => {
