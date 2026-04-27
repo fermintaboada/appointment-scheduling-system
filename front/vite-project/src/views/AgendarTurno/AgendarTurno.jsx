@@ -39,6 +39,14 @@ const AgendarTurno = () => {
     return (
       <div className={Styles.container}>
         <h1 className={Styles.title}>Agendar Turno</h1>
+        <div className={Styles.policy} role="note" aria-label="Política de turnos">
+          <p className={Styles.policyTitle}>Antes de reservar</p>
+          <ul className={Styles.policyList}>
+            {POLITICA.map((texto) => (
+              <li key={texto} className={Styles.policyItem}>{texto}</li>
+            ))}
+          </ul>
+        </div>
         <div className={Styles.loginPromptCard}>
           <p className={Styles.loginPromptText}>
             Necesitás una cuenta para reservar un turno en Q-Golf.
