@@ -40,12 +40,12 @@
 
 .formTitle {
   font-family: var(--font-serif);
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   margin: 0 0 1.8rem;
   color: var(--c-text-heading);
-  font-weight: 700;
+  font-weight: 400;
   text-align: center;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.01em;
 }
 
 .formGroup {

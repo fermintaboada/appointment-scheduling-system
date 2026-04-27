@@ -23,9 +23,9 @@
 .logoLink {
   color: var(--c-text-heading);
   font-family: var(--font-serif);
-  font-weight: 700;
-  font-size: 1.75rem;
-  letter-spacing: 0.08em;
+  font-weight: 400;
+  font-size: 1.8rem;
+  letter-spacing: 0.04em;
   text-decoration: none;
   line-height: 1;
 }
