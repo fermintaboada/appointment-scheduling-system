@@ -37,9 +37,9 @@ function NavBar() {
 
   const handleLogout = () => {
     closeMenu();
-    Swal.fire({ icon: "warning", title: "Sesión cerrada correctamente" });
+    Swal.fire({ icon: "success", title: "Sesión cerrada correctamente" });
     logOutUser();
-    navigate("/login");
+    navigate("/");
   };
 
   return (
