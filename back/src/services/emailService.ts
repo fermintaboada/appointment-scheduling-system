@@ -13,13 +13,13 @@ const formatDate = (dateStr: string): string => {
 export const sendAppointmentConfirmation = async (
     userEmail: string,
     userName: string,
-    date: string,
+    date: Date | string,
     time: string,
     appointmentId: number
 ): Promise<void> => {
     if (!RESEND_API_KEY) return;
 
-    const formattedDate = formatDate(date);
+    const formattedDate = formatDate(String(date));
 
     await resend.emails.send({
         from: 'Q-Golf <onboarding@resend.dev>',
