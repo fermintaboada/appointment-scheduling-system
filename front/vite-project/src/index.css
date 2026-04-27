@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Raleway:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Serif:wght@400;600;700&family=Raleway:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --font-serif: 'Italiana', serif;
+  --font-serif: 'Josefin Serif', serif;
   --font-sans: 'Raleway', sans-serif;
 
   --c-green-darkest: #1C2B1A;

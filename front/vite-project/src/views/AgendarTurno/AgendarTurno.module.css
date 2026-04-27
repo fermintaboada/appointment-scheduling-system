@@ -23,11 +23,11 @@
   position: relative;
   z-index: 1;
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 5vw, 3.6rem);
-  font-weight: 400;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 700;
   color: var(--c-cream-light);
   margin-bottom: 2rem;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.04em;
   text-align: center;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
