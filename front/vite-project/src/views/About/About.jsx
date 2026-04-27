@@ -1,10 +1,12 @@
 import styles from "./About.module.css";
 import { useReveal } from "../../hooks/useReveal";
+import Footer from "../../components/Footer/Footer";
 
 function About() {
   useReveal();
 
   return (
+    <>
     <div className={`${styles.about} page-enter`}>
       <div className={styles.heroSection}>
         <img
@@ -81,6 +83,8 @@ function About() {
         </section>
       </main>
     </div>
+    <Footer />
+    </>
   );
 }
 

@@ -3,6 +3,14 @@ import { UsersContext } from "../../context/UserContext";
 import Styles from "./Turno.module.css";
 import Swal from "sweetalert2";
 
+const formatDate = (dateStr) => {
+  if (!dateStr) return dateStr;
+  const [year, month, day] = dateStr.split("-").map(Number);
+  return new Date(year, month - 1, day).toLocaleDateString("es-AR", {
+    day: "numeric", month: "long", year: "numeric",
+  });
+};
+
 function Turno({ id, date, time, status, index = 0 }) {
   const { cancelUserApp } = useContext(UsersContext);
 
@@ -29,7 +37,7 @@ function Turno({ id, date, time, status, index = 0 }) {
         </span>
       </div>
       <div className={Styles.appointmentDetails}>
-        <p><strong>Fecha:</strong> <span>{date}</span></p>
+        <p><strong>Fecha:</strong> <span>{formatDate(date)}</span></p>
         <p><strong>Hora:</strong> <span>{time}</span></p>
       </div>
       <button

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { UsersContext } from "../../context/UserContext";
 import Swal from "sweetalert2";
 import Styles from "./AgendarTurno.module.css";
+import Footer from "../../components/Footer/Footer";
 
 const POLITICA = [
   "Solo días hábiles — lunes a viernes",
@@ -37,30 +38,34 @@ const AgendarTurno = () => {
 
   if (!isLogged) {
     return (
-      <div className={Styles.container}>
-        <h1 className={Styles.title}>Agendar Turno</h1>
-        <div className={Styles.policy} role="note" aria-label="Política de turnos">
-          <p className={Styles.policyTitle}>Antes de reservar</p>
-          <ul className={Styles.policyList}>
-            {POLITICA.map((texto) => (
-              <li key={texto} className={Styles.policyItem}>{texto}</li>
-            ))}
-          </ul>
-        </div>
-        <div className={Styles.loginPromptCard}>
-          <p className={Styles.loginPromptText}>
-            Necesitás una cuenta para reservar un turno en Q-Golf.
-          </p>
-          <div className={Styles.loginPromptActions}>
-            <Link to="/login" className={Styles.loginPromptBtn}>Iniciar sesión</Link>
-            <Link to="/register" className={Styles.loginPromptSecondary}>Registrarse</Link>
+      <>
+        <div className={Styles.container}>
+          <h1 className={Styles.title}>Agendar Turno</h1>
+          <div className={Styles.policy} role="note" aria-label="Política de turnos">
+            <p className={Styles.policyTitle}>Antes de reservar</p>
+            <ul className={Styles.policyList}>
+              {POLITICA.map((texto) => (
+                <li key={texto} className={Styles.policyItem}>{texto}</li>
+              ))}
+            </ul>
+          </div>
+          <div className={Styles.loginPromptCard}>
+            <p className={Styles.loginPromptText}>
+              Necesitás una cuenta para reservar un turno en Q-Golf.
+            </p>
+            <div className={Styles.loginPromptActions}>
+              <Link to="/login" className={Styles.loginPromptBtn}>Iniciar sesión</Link>
+              <Link to="/register" className={Styles.loginPromptSecondary}>Registrarse</Link>
+            </div>
           </div>
         </div>
-      </div>
+        <Footer />
+      </>
     );
   }
 
   return (
+    <>
     <div className={Styles.container}>
       <h1 className={Styles.title}>Agendar Turno</h1>
 
@@ -114,12 +119,14 @@ const AgendarTurno = () => {
         <button
           type="submit"
           className={Styles.submitButton}
-          disabled={Object.keys(formik.errors).length > 0}
+          disabled={formik.isSubmitting}
         >
           Confirmar turno
         </button>
       </form>
     </div>
+    <Footer />
+    </>
   );
 };
 

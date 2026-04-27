@@ -4,9 +4,10 @@ import styles from "./NotFound.module.css";
 function NotFound() {
   return (
     <div className={styles.container}>
-      <div className={styles.icon}>✖</div>
-      <h1 className={styles.title}>Error 404</h1>
-      <p className={styles.message}>¡Ups! Esta dirección no existe.</p>
+      <div className={styles.code}>404</div>
+      <div className={styles.divider} />
+      <h1 className={styles.title}>Página no encontrada</h1>
+      <p className={styles.message}>La dirección que buscás no existe o fue removida.</p>
       <Link to="/" className={styles.link}>
         Regresar a la página principal
       </Link>
