@@ -7,186 +7,240 @@ import { useContext } from "react";
 import { UsersContext } from "../../context/UserContext";
 
 function Register() {
-  
-  const {registerUser} =  useContext(UsersContext)
+  const { registerUser } = useContext(UsersContext);
   const formik = useFormik({
     initialValues: {
       name: "",
       email: "",
-      birthDate: "",  
+      birthDate: "",
       nDni: "",
       username: "",
-      password: ""
+      password: "",
+      confirmPassword: ""
     },
     validate: registerFormValidates,
     initialErrors: {
-      name: "Name is required",
-      email: "Email is required",
-      birthDate: "BirthDate is required", 
-      nDni: "nDni is required",
-      username: "Username is required",
-      password: "Password is required"
+      name: "requerido",
+      email: "requerido",
+      birthDate: "requerido",
+      nDni: "requerido",
+      username: "requerido",
+      password: "requerido",
+      confirmPassword: "requerido"
     },
     onSubmit: async (values) => {
       try {
-        await registerUser(values)
-        Swal.fire({
-          icon: "success",
-          title:"El usuario fue creado correctamente"   
-        })
-      } catch(err) {
-          if (err.response?.data?.msg.includes("username")) {
+        await registerUser(values);
+        Swal.fire({ icon: "success", title: "Cuenta creada correctamente" });
+      } catch (err) {
+        if (err.response?.data?.msg?.includes("username")) {
           Swal.fire({
             icon: "error",
-            title: `Ya existe un usuario con el username: ${formik.values.username}`,
-            text: "Intente de nuevo con otro username"
-          })
-        }
-
-        if (err.response?.data?.msg.includes("email")) {
+            title: `El usuario "${formik.values.username}" ya existe`,
+            text: "Intentá con otro nombre de usuario"
+          });
+        } else if (err.response?.data?.msg?.includes("email")) {
           Swal.fire({
             icon: "error",
-            title: `Ya existe un usuario con el email: ${formik.values.email}`,
-            text: "Intente de nuevo con otro email"
-          })
-        }
-
-        if (err.response?.data?.msg.includes("birthDate")) {
+            title: `El email "${formik.values.email}" ya está registrado`,
+            text: "Intentá con otro email"
+          });
+        } else if (err.response?.data?.msg?.includes("birthDate")) {
           Swal.fire({
             icon: "error",
-            title: `Fecha de nacimiento inválida: ${formik.values.birthDate}`,
-            text: "Intente de nuevo con otra fecha"
-          })
-        }
-
-        if (err.response?.data?.msg.includes("nDni")) {
+            title: "Fecha de nacimiento inválida",
+            text: "Revisá la fecha ingresada"
+          });
+        } else if (err.response?.data?.msg?.includes("nDni")) {
           Swal.fire({
             icon: "error",
-            title: `Ya existe un usuario con el DNI: ${formik.values.nDni}`,
-            text: "Intente de nuevo con otro número de documento"
-          })
+            title: `El DNI "${formik.values.nDni}" ya está registrado`,
+            text: "Intentá con otro número de documento"
+          });
         }
       }
     }
   });
 
   return (
-    <form className={styles.formContainer} onSubmit={formik.handleSubmit}>
-      <h2 className={styles.formTitle}>Formulario De Registro</h2>
+    <form className={styles.formContainer} onSubmit={formik.handleSubmit} noValidate>
+      <div className={styles.formCard}>
+        <h2 className={styles.formTitle}>Crear cuenta</h2>
 
-      <div className={styles.formGroup}>
-        <label className={styles.formLabel}>Nombre:</label>
-        <input
-          className={styles.formInput}
-          type="text"
-          name="name"
-          placeholder="Tu nombre"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.name}
-        />
-        {formik.errors.name && (
-          <label className={styles.errorLabel}>{formik.errors.name}</label>
-        )}
-      </div>
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel} htmlFor="name">Nombre</label>
+          <input
+            id="name"
+            className={styles.formInput}
+            type="text"
+            name="name"
+            placeholder="Tu nombre completo"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.name}
+            aria-invalid={!!formik.errors.name}
+            aria-describedby={formik.errors.name ? "error-name" : undefined}
+            autoComplete="name"
+          />
+          {formik.errors.name && (
+            <p id="error-name" className={styles.errorLabel} role="alert">
+              {formik.errors.name}
+            </p>
+          )}
+        </div>
 
-      <div className={styles.formGroup}>
-        <label className={styles.formLabel}>Email:</label>
-        <input
-          className={styles.formInput}
-          type="text"
-          name="email"
-          placeholder="mail@mail.com"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.email}
-        />
-        {formik.errors.email && (
-          <label className={styles.errorLabel}>{formik.errors.email}</label>
-        )}
-      </div>
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel} htmlFor="email">Email</label>
+          <input
+            id="email"
+            className={styles.formInput}
+            type="email"
+            name="email"
+            placeholder="mail@mail.com"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+            aria-invalid={!!formik.errors.email}
+            aria-describedby={formik.errors.email ? "error-email" : undefined}
+            autoComplete="email"
+          />
+          {formik.errors.email && (
+            <p id="error-email" className={styles.errorLabel} role="alert">
+              {formik.errors.email}
+            </p>
+          )}
+        </div>
 
-      <div className={styles.formGroup}>
-        <label className={styles.formLabel}>Fecha de nacimiento:</label>
-        <input
-          className={styles.formInput}
-          type="date"
-          name="birthDate"  
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.birthDate}  
-        />
-        {formik.errors.birthDate && (       
-          <label className={styles.errorLabel}>{formik.errors.birthDate}</label>
-        )}
-      </div>
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel} htmlFor="birthDate">Fecha de nacimiento</label>
+          <input
+            id="birthDate"
+            className={styles.formInput}
+            type="date"
+            name="birthDate"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.birthDate}
+            aria-invalid={!!formik.errors.birthDate}
+            aria-describedby={formik.errors.birthDate ? "error-birthDate" : undefined}
+            autoComplete="bday"
+          />
+          {formik.errors.birthDate && (
+            <p id="error-birthDate" className={styles.errorLabel} role="alert">
+              {formik.errors.birthDate}
+            </p>
+          )}
+        </div>
 
-      <div className={styles.formGroup}>
-        <label className={styles.formLabel}>N° de DNI:</label>
-        <input
-          className={styles.formInput}
-          type="text"
-          name="nDni"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.nDni}
-        />
-        {formik.errors.nDni && (
-          <label className={styles.errorLabel}>{formik.errors.nDni}</label>
-        )}
-      </div>
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel} htmlFor="nDni">N° de DNI</label>
+          <input
+            id="nDni"
+            className={styles.formInput}
+            type="text"
+            name="nDni"
+            placeholder="12345678"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.nDni}
+            aria-invalid={!!formik.errors.nDni}
+            aria-describedby={formik.errors.nDni ? "error-nDni" : undefined}
+            inputMode="numeric"
+          />
+          {formik.errors.nDni && (
+            <p id="error-nDni" className={styles.errorLabel} role="alert">
+              {formik.errors.nDni}
+            </p>
+          )}
+        </div>
 
-      <div className={styles.formGroup}>
-        <label className={styles.formLabel}>Username:</label>
-        <input
-          className={styles.formInput}
-          type="text"
-          name="username"
-          placeholder="Tu nombre de usuario"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.username}
-        />
-        {formik.errors.username && (
-          <label className={styles.errorLabel}>{formik.errors.username}</label>
-        )}
-      </div>
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel} htmlFor="username">Usuario</label>
+          <input
+            id="username"
+            className={styles.formInput}
+            type="text"
+            name="username"
+            placeholder="Tu nombre de usuario"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.username}
+            aria-invalid={!!formik.errors.username}
+            aria-describedby={formik.errors.username ? "error-username" : undefined}
+            autoComplete="username"
+          />
+          {formik.errors.username && (
+            <p id="error-username" className={styles.errorLabel} role="alert">
+              {formik.errors.username}
+            </p>
+          )}
+        </div>
 
-      <div className={styles.formGroup}>
-        <label className={styles.formLabel}>Password:</label>
-        <input
-          className={styles.formInput}
-          type="password"
-          name="password"
-          placeholder="********"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.password}
-        />
-        {formik.errors.password && (
-          <label className={styles.errorLabel}>{formik.errors.password}</label>
-        )}
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel} htmlFor="password">Contraseña</label>
+          <input
+            id="password"
+            className={styles.formInput}
+            type="password"
+            name="password"
+            placeholder="Mínimo 8 caracteres"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
+            aria-invalid={!!formik.errors.password}
+            aria-describedby={formik.errors.password ? "error-password" : undefined}
+            autoComplete="new-password"
+          />
+          {formik.errors.password && (
+            <p id="error-password" className={styles.errorLabel} role="alert">
+              {formik.errors.password}
+            </p>
+          )}
+        </div>
+
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel} htmlFor="confirmPassword">Confirmá tu contraseña</label>
+          <input
+            id="confirmPassword"
+            className={styles.formInput}
+            type="password"
+            name="confirmPassword"
+            placeholder="Repetí tu contraseña"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.confirmPassword}
+            aria-invalid={!!formik.errors.confirmPassword}
+            aria-describedby={formik.errors.confirmPassword ? "error-confirmPassword" : undefined}
+            autoComplete="new-password"
+          />
+          {formik.errors.confirmPassword && (
+            <p id="error-confirmPassword" className={styles.errorLabel} role="alert">
+              {formik.errors.confirmPassword}
+            </p>
+          )}
+        </div>
+
+        <button
+          className={styles.formButton}
+          type="submit"
+          disabled={
+            Object.keys(formik.errors).length > 0 ||
+            !formik.values.name ||
+            !formik.values.email ||
+            !formik.values.birthDate ||
+            !formik.values.nDni ||
+            !formik.values.username ||
+            !formik.values.password ||
+            !formik.values.confirmPassword
+          }
+        >
+          Registrarse
+        </button>
+
+        <p className={styles.loginLabel}>
+          ¿Ya tenés cuenta? <Link to="/login">Iniciá sesión</Link>
+        </p>
       </div>
- 
-      <button
-        className={styles.formButton}
-        type="submit"
-        disabled={
-          Object.keys(formik.errors).length > 0 ||
-          !formik.values.name ||
-          !formik.values.email ||
-          !formik.values.birthDate || 
-          !formik.values.nDni ||
-          !formik.values.username ||
-          !formik.values.password
-        }
-      >
-        Registrarse
-      </button>
-      <br/>
-      <label className={styles.loginLabel}>
-        ¿Ya tienes cuenta? <Link to="/login"> Login</Link>
-      </label>
     </form>
   );
 }

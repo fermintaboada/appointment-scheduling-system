@@ -1,97 +1,132 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
-
 .about {
-    background-color: #F4F1EC;
-    font-family: 'DM Sans', sans-serif;
+  background-color: var(--c-cream);
+  font-family: var(--font-sans);
 }
 
 .heroSection {
-    width: 100%;
-    height: 60vh;
-    overflow: hidden;
-    position: relative;
+  width: 100%;
+  height: 55vh;
+  min-height: 300px;
+  overflow: hidden;
+  position: relative;
 }
 
 .heroSection img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.82);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.82);
+  transition: transform 8s ease;
+}
+
+.heroSection:hover img {
+  transform: scale(1.03);
 }
 
 .section {
-    padding: 5rem 6%;
+  padding: 5rem 6%;
 }
 
 .sectionAlt {
-    background-color: #EDE9E1;
+  background-color: var(--c-cream-alt);
 }
 
 .row {
-    display: flex;
-    align-items: center;
-    gap: 4rem;
-    max-width: 1100px;
-    margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .rowReverse {
-    flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 .textBlock {
-    flex: 1;
-    min-width: 0;
+  flex: 1;
+  min-width: 0;
 }
 
 .textBlock h1 {
-    font-family: 'Cormorant Garamond', serif;
-    color: #2D5016;
-    font-size: 2.4rem;
-    font-weight: 700;
-    margin-bottom: 0.8rem;
-    letter-spacing: 0.02em;
+  font-family: var(--font-serif);
+  color: var(--c-text-heading);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  margin: 0 0 0.8rem;
+  letter-spacing: 0.02em;
 }
 
 .textBlock p {
-    color: #4A4A3A;
-    line-height: 1.85;
-    font-size: 1.05rem;
+  color: var(--c-text-body);
+  line-height: 1.85;
+  font-size: 1.05rem;
+  max-width: 60ch;
 }
 
+/* ── Image block with hover zoom ── */
 .imageBlock {
-    flex: 1;
-    min-width: 0;
+  flex: 1;
+  min-width: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.35s ease;
+}
+
+.imageBlock:hover {
+  box-shadow: var(--shadow-card-hover);
 }
 
 .image {
-    width: 100%;
-    height: 360px;
-    object-fit: cover;
-    border-radius: 14px;
-    box-shadow: 0 6px 24px rgba(45, 80, 22, 0.18);
-    filter: brightness(0.92);
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.92);
+  transition: transform 0.5s var(--ease-out-quart), filter 0.35s ease;
 }
 
+.imageBlock:hover .image {
+  transform: scale(1.05);
+  filter: brightness(0.85);
+}
+
+/* ── Divider ── */
 .divider {
-    width: 50px;
-    height: 3px;
-    background-color: #C8A96E;
-    margin-bottom: 1.4rem;
-    border-radius: 2px;
+  width: 40px;
+  height: 3px;
+  background-color: var(--c-gold);
+  margin-bottom: 1.4rem;
+  border-radius: 2px;
 }
 
 @media (max-width: 768px) {
-    .row, .rowReverse {
-        flex-direction: column;
-        gap: 2rem;
-    }
+  .row, .rowReverse {
+    flex-direction: column;
+    gap: 2rem;
+  }
 
-    .image {
-        height: 240px;
-    }
+  .section {
+    padding: 3rem 5%;
+  }
 
-    .section {
-        padding: 3rem 5%;
-    }
+  .heroSection {
+    height: 40vh;
+  }
+
+  .heroSection:hover img {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroSection img,
+  .image {
+    transition: none;
+  }
+  .heroSection:hover img,
+  .imageBlock:hover .image {
+    transform: none;
+  }
 }

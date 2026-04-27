@@ -3,40 +3,61 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   text-align: center;
-  background-color: #f9f9f9;
+  background-color: var(--c-cream);
+  padding: 2rem;
 }
 
 .icon {
-  font-size: 6rem;
-  color: red;
+  font-size: 4rem;
+  color: var(--c-gold);
   margin-bottom: 1rem;
+  font-family: var(--font-serif);
+  font-weight: 600;
 }
 
 .title {
+  font-family: var(--font-serif);
   font-size: 3rem;
-  font-weight: bold;
-  color: #333;
+  font-weight: 700;
+  color: var(--c-text-heading);
   margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
 }
 
 .message {
-  font-size: 1.5rem;
-  color: #555;
+  font-size: 1.15rem;
+  color: var(--c-text-body);
   margin-bottom: 2rem;
+  max-width: 50ch;
+  line-height: 1.6;
 }
 
 .link {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: var(--font-sans);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   text-decoration: none;
-  color: white;
-  background-color: #28a745;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  transition: background-color 0.3s;
+  color: var(--c-green-darkest);
+  background-color: var(--c-gold);
+  padding: 0.85rem 2rem;
+  min-height: 44px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: var(--shadow-button);
 }
 
 .link:hover {
-  background-color: #218838;
+  background-color: var(--c-gold-hover);
+  transform: translateY(-2px);
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--c-gold);
+  outline-offset: 3px;
 }

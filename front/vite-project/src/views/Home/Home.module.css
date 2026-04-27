@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
-
 .home {
-  font-family: 'DM Sans', sans-serif;
-  background-color: #F4F1EC;
+  font-family: var(--font-sans);
+  background-color: var(--c-cream);
 }
 
+/* ── Hero ── */
 .hero {
   height: 90vh;
+  min-height: 480px;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -20,8 +20,8 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(28, 43, 26, 0.35) 0%,
-    rgba(28, 43, 26, 0.65) 100%
+    rgba(28, 43, 26, 0.25) 0%,
+    rgba(28, 43, 26, 0.62) 100%
   );
 }
 
@@ -33,86 +33,162 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #F9F6F0;
+  color: var(--c-cream-light);
   z-index: 2;
+  padding: 2rem 1.5rem;
 }
 
-.heroContent h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 3.8rem;
+/* Hero stagger entrance */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.heroTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin: 0 0 1.25rem;
   letter-spacing: 0.03em;
   line-height: 1.15;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+  max-width: 700px;
+  animation: heroFadeUp 0.75s var(--ease-out-quart) 0.1s both;
 }
 
 .heroSubtitle {
-  font-size: 1.15rem;
-  color: rgba(249, 246, 240, 0.85);
-  margin-bottom: 2rem;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: rgba(249, 246, 240, 0.88);
+  margin: 0 0 2rem;
   max-width: 520px;
   line-height: 1.65;
   font-weight: 400;
+  animation: heroFadeUp 0.75s var(--ease-out-quart) 0.28s both;
 }
 
+/* ── CTA button with shimmer ── */
 .ctaButton {
-  background-color: #C8A96E;
-  color: #1C2B1A;
-  padding: 0.85rem 2.4rem;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--c-gold);
+  color: var(--c-green-darkest);
+  padding: 0.9rem 2.4rem;
+  min-height: 44px;
   border-radius: 999px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(200, 169, 110, 0.35);
+  transition: background-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+  box-shadow: var(--shadow-button);
+  display: inline-flex;
+  align-items: center;
+  animation: heroFadeUp 0.75s var(--ease-out-quart) 0.44s both;
+}
+
+.ctaButton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -110%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.28),
+    transparent
+  );
+  transition: left 0.45s ease;
 }
 
 .ctaButton:hover {
-  background-color: #b8945a;
+  background-color: var(--c-gold-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(200, 169, 110, 0.45);
+  box-shadow: var(--shadow-button-hover);
 }
 
+.ctaButton:hover::after {
+  left: 130%;
+}
+
+.ctaButton:focus-visible {
+  outline: 2px solid var(--c-cream-light);
+  outline-offset: 3px;
+}
+
+/* ── Sections ── */
 .section {
-  padding: 4rem 5%;
+  padding: 5rem 5%;
   text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.section h1 {
-  font-family: 'Cormorant Garamond', serif;
-  color: #2D5016;
+.sectionAlt {
+  background-color: var(--c-cream-alt);
+  max-width: 100%;
+  padding: 5rem 5%;
+}
+
+.sectionAlt .sectionHeading,
+.sectionAlt .sectionText,
+.sectionAlt .imageWrapper {
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sectionHeading {
+  font-family: var(--font-serif);
+  color: var(--c-text-heading);
   font-weight: 700;
-  font-size: 2.4rem;
-  margin-bottom: 1.5rem;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin: 0 0 1.25rem;
   letter-spacing: 0.02em;
 }
 
-.section p {
-  color: #4A4A3A;
+.sectionText {
+  color: var(--c-text-body);
   line-height: 1.8;
   font-size: 1.05rem;
-  margin-bottom: 1.5rem;
-  max-width: 700px;
+  margin: 0 0 2rem;
+  max-width: 68ch;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* ── Image with zoom on hover ── */
+.imageWrapper {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.35s ease;
+}
+
+.imageWrapper:hover {
+  box-shadow: var(--shadow-card-hover);
 }
 
 .image {
   width: 100%;
   height: auto;
   display: block;
-  margin: 0 auto;
-  border-radius: 14px;
   filter: brightness(0.88);
-  box-shadow: 0 6px 24px rgba(45, 80, 22, 0.18);
+  transition: transform 0.5s var(--ease-out-quart), filter 0.35s ease;
 }
 
+.imageWrapper:hover .image {
+  transform: scale(1.04);
+  filter: brightness(0.82);
+}
+
+/* ── Footer ── */
 .footer {
-  background-color: #1C2B1A;
-  font-family: 'DM Sans', sans-serif;
+  background-color: var(--c-green-darkest);
+  font-family: var(--font-sans);
 }
 
 .footerGrid {
@@ -125,8 +201,8 @@
 }
 
 .footerLogo {
-  font-family: 'Cormorant Garamond', serif;
-  color: #C8A96E;
+  font-family: var(--font-serif);
+  color: var(--c-gold);
   font-size: 2rem;
   font-weight: 700;
   margin: 0 0 0.75rem;
@@ -142,8 +218,7 @@
 }
 
 .footerHeading {
-  font-family: 'DM Sans', sans-serif;
-  color: #C8A96E;
+  color: var(--c-gold);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -185,7 +260,13 @@
 }
 
 .footerLink:hover {
-  color: #C8A96E;
+  color: var(--c-gold);
+}
+
+.footerLink:focus-visible {
+  outline: 2px solid var(--c-gold);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 .footerBottom {
@@ -202,13 +283,32 @@
 }
 
 @media (max-width: 768px) {
+  .hero { height: 75vh; }
+
+  .section {
+    padding: 3.5rem 5%;
+  }
+
+  .sectionAlt {
+    padding: 3.5rem 5%;
+  }
+
   .footerGrid {
     grid-template-columns: 1fr;
     gap: 2rem;
     padding: 3rem 5% 2rem;
   }
 
-  .footerTagline {
-    max-width: 100%;
+  .footerTagline { max-width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroTitle, .heroSubtitle, .ctaButton {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
+
+  .ctaButton::after { display: none; }
+  .image { transition: none; }
 }

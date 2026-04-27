@@ -5,27 +5,28 @@ import { UsersContext } from "../../context/UserContext";
 import Swal from "sweetalert2";
 import Styles from "./AgendarTurno.module.css";
 
+const POLITICA = [
+  "Solo días hábiles — lunes a viernes",
+  "Horario disponible: 08:00 a 18:00 hs",
+  "Mínimo 24 horas de anticipación",
+  "Un turno activo por vez",
+];
+
 const AgendarTurno = () => {
   const { createUserApp } = useContext(UsersContext);
 
   const formik = useFormik({
-    initialValues: {
-      date: "",
-      time: "",
-    },
+    initialValues: { date: "", time: "" },
     validate: dateTimeValidates,
     onSubmit: async (values) => {
       try {
         await createUserApp(values);
-        Swal.fire({
-          icon: "success",
-          title: "Turno agendado correctamente",
-        }) 
+        Swal.fire({ icon: "success", title: "Turno agendado correctamente" });
       } catch (err) {
         Swal.fire({
           icon: "error",
-          title: `${err.response.data.msg}`,
-          text: "Intentelo de nuevo",
+          title: err.response?.data?.msg ?? "No se pudo agendar el turno",
+          text: "Intentalo de nuevo",
         });
       } finally {
         formik.resetForm();
@@ -36,27 +37,36 @@ const AgendarTurno = () => {
   return (
     <div className={Styles.container}>
       <h1 className={Styles.title}>Agendar Turno</h1>
-      <form className={Styles.form} onSubmit={formik.handleSubmit}>
+
+      <div className={Styles.policy} role="note" aria-label="Política de turnos">
+        <p className={Styles.policyTitle}>Antes de reservar</p>
+        <ul className={Styles.policyList}>
+          {POLITICA.map((texto) => (
+            <li key={texto} className={Styles.policyItem}>{texto}</li>
+          ))}
+        </ul>
+      </div>
+
+      <form className={Styles.form} onSubmit={formik.handleSubmit} noValidate>
         <div className={Styles.formGroup}>
           <label htmlFor="date">Fecha</label>
           <input
             id="date"
             name="date"
             type="date"
-            min={new Date().toISOString().split("T")[0]} 
+            min={new Date().toISOString().split("T")[0]}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.date}
-            className={
-              formik.touched.date && formik.errors.date
-                ? Styles.errorInput
-                : Styles.input
-            }
+            className={formik.touched.date && formik.errors.date ? Styles.errorInput : Styles.input}
+            aria-invalid={formik.touched.date && !!formik.errors.date}
+            aria-describedby={formik.touched.date && formik.errors.date ? "error-date" : undefined}
           />
           {formik.touched.date && formik.errors.date && (
-            <div className={Styles.error}>{formik.errors.date}</div>
+            <p id="error-date" className={Styles.error} role="alert">{formik.errors.date}</p>
           )}
         </div>
+
         <div className={Styles.formGroup}>
           <label htmlFor="time">Hora</label>
           <input
@@ -66,14 +76,12 @@ const AgendarTurno = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.time}
-            className={
-              formik.touched.time && formik.errors.time
-                ? Styles.errorInput
-                : Styles.input
-            }
+            className={formik.touched.time && formik.errors.time ? Styles.errorInput : Styles.input}
+            aria-invalid={formik.touched.time && !!formik.errors.time}
+            aria-describedby={formik.touched.time && formik.errors.time ? "error-time" : undefined}
           />
           {formik.touched.time && formik.errors.time && (
-            <div className={Styles.error}>{formik.errors.time}</div>
+            <p id="error-time" className={Styles.error} role="alert">{formik.errors.time}</p>
           )}
         </div>
 
@@ -82,7 +90,7 @@ const AgendarTurno = () => {
           className={Styles.submitButton}
           disabled={Object.keys(formik.errors).length > 0}
         >
-          Agendar
+          Confirmar turno
         </button>
       </form>
     </div>

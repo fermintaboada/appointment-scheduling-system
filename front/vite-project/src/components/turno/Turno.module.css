@@ -1,22 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
+@keyframes cardAppear {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
 .appointmentCard {
-  background: rgba(28, 43, 26, 0.55);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(200, 169, 110, 0.30);
+  background: var(--c-cream-light);
+  border: 1px solid rgba(200, 169, 110, 0.35);
   border-radius: 16px;
   padding: 1.6rem;
-  margin: 0.5rem;
-  width: 280px;
-  font-family: 'DM Sans', sans-serif;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.30);
+  width: 100%;
+  max-width: 340px;
+  font-family: var(--font-sans);
+  box-shadow: var(--shadow-card);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: cardAppear 0.45s var(--ease-out-quart, cubic-bezier(0.25, 1, 0.5, 1)) both;
 }
 
 .appointmentCard:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  border-color: rgba(200, 169, 110, 0.55);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .appointmentHeader {
@@ -29,31 +31,31 @@
 }
 
 .appointmentHeader h3 {
-  font-family: 'Cormorant Garamond', serif;
-  color: #F4F1EC;
-  font-size: 1.25rem;
+  font-family: var(--font-serif);
+  color: var(--c-text-heading);
+  font-size: 1.2rem;
   font-weight: 600;
   margin: 0;
   letter-spacing: 0.02em;
 }
 
 .statusActive {
-  background-color: #4A7C3F;
-  color: #F4F1EC;
+  background-color: var(--c-green-mid);
+  color: var(--c-cream-light);
   padding: 0.3rem 0.85rem;
   border-radius: 20px;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .statusInactive {
-  background-color: rgba(180, 60, 60, 0.75);
-  color: #F9F6F0;
+  background-color: rgba(180, 60, 60, 0.15);
+  color: #a33;
   padding: 0.3rem 0.85rem;
   border-radius: 20px;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -61,41 +63,55 @@
 
 .appointmentDetails p {
   margin: 0.45rem 0;
-  color: rgba(244, 241, 236, 0.85);
+  color: var(--c-text-body);
   font-size: 0.9rem;
 }
 
 .appointmentDetails strong {
-  color: #C8A96E;
+  color: var(--c-green-dark);
   font-weight: 600;
 }
 
 .cancelButton {
   display: block;
-  margin: 1.2rem auto 0 auto;
-  padding: 0.6rem 1.4rem;
+  margin: 1.2rem auto 0;
+  padding: 0.7rem 1.4rem;
+  min-height: 44px;
+  width: 100%;
   background-color: transparent;
-  color: #f4a0a0;
-  border: 1.5px solid rgba(244, 100, 100, 0.6);
+  color: #a33;
+  border: 1.5px solid rgba(180, 60, 60, 0.4);
   border-radius: 8px;
   font-size: 0.85rem;
   font-weight: 600;
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-sans);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .cancelButton:hover {
-  background-color: rgba(220, 50, 50, 0.75);
-  border-color: transparent;
-  color: #fff;
+  background-color: rgba(180, 60, 60, 0.08);
+  border-color: rgba(180, 60, 60, 0.7);
+}
+
+.cancelButton:focus-visible {
+  outline: 2px solid rgba(180, 60, 60, 0.6);
+  outline-offset: 3px;
 }
 
 .disabled {
   background-color: transparent !important;
   border-color: rgba(150, 150, 140, 0.3) !important;
-  color: rgba(249, 246, 240, 0.3) !important;
+  color: rgba(74, 74, 58, 0.35) !important;
   cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .appointmentCard {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }

@@ -1,40 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
-
 .formContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 2rem;
+  padding: 2rem 1.25rem;
   background-image: url("https://i.pinimg.com/1200x/79/bf/b9/79bfb9fb0f89e530152ca87edc2d7de5.jpg");
   background-size: cover;
   background-position: center;
   position: relative;
-  z-index: 1;
 }
 
 .formContainer::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(28, 43, 26, 0.72) 0%,
-    rgba(45, 80, 22, 0.60) 100%
-  );
-  z-index: -1;
+  background: rgba(28, 43, 26, 0.52);
+}
+
+@keyframes cardAppear {
+  from { opacity: 0; transform: translateY(24px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.formCard {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  background: var(--c-cream-light);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.28);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  animation: cardAppear 0.55s var(--ease-out-quart, cubic-bezier(0.25, 1, 0.5, 1)) both;
 }
 
 .formTitle {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.4rem;
-  margin-bottom: 1.8rem;
-  color: #F4F1EC;
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  margin: 0 0 1.8rem;
+  color: var(--c-text-heading);
   font-weight: 700;
   text-align: center;
   letter-spacing: 0.03em;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .formGroup {
@@ -42,14 +53,13 @@
   flex-direction: column;
   margin-bottom: 1.1rem;
   width: 100%;
-  max-width: 400px;
 }
 
 .formLabel {
   margin-bottom: 0.45rem;
-  color: #C8A96E;
-  font-size: 0.8rem;
-  font-family: 'DM Sans', sans-serif;
+  color: var(--c-green-dark);
+  font-size: 0.78rem;
+  font-family: var(--font-sans);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -57,76 +67,120 @@
 
 .formInput {
   padding: 0.85rem 1rem;
-  border: 1px solid rgba(200, 169, 110, 0.4);
+  border: 1px solid rgba(45, 80, 22, 0.22);
   border-radius: 8px;
   outline: none;
-  font-size: 0.95rem;
-  font-family: 'DM Sans', sans-serif;
-  background: rgba(244, 241, 236, 0.12);
-  color: #F9F6F0;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(4px);
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  background: #fff;
+  color: var(--c-text-body);
+  min-height: 44px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .formInput::placeholder {
-  color: rgba(249, 246, 240, 0.45);
+  color: rgba(74, 74, 58, 0.38);
 }
 
-.formInput:focus {
-  border-color: #C8A96E;
-  background: rgba(244, 241, 236, 0.18);
-  box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.2);
+.formInput:focus,
+.formInput:focus-visible {
+  border-color: var(--c-gold);
+  box-shadow: var(--focus-ring);
+}
+
+.formInput[aria-invalid="true"] {
+  border-color: rgba(185, 28, 28, 0.5);
 }
 
 .errorLabel {
   margin-top: 0.4rem;
   font-size: 0.82rem;
-  color: #f4a0a0;
-  font-family: 'DM Sans', sans-serif;
+  color: var(--c-error);
+  font-family: var(--font-sans);
 }
 
 .formButton {
   margin-top: 1.2rem;
   padding: 0.95rem 1.5rem;
-  background-color: #C8A96E;
-  color: #1C2B1A;
+  min-height: 44px;
+  width: 100%;
+  background-color: var(--c-gold);
+  color: var(--c-green-darkest);
   border: none;
   border-radius: 8px;
   font-size: 0.9rem;
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(200, 169, 110, 0.3);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-button);
 }
 
 .formButton:hover:not(:disabled) {
-  background-color: #b8945a;
+  background-color: var(--c-gold-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(200, 169, 110, 0.4);
+  box-shadow: var(--shadow-button-hover);
+}
+
+.formButton:focus-visible {
+  outline: 2px solid var(--c-gold);
+  outline-offset: 3px;
 }
 
 .formButton:disabled {
-  background-color: rgba(150, 150, 140, 0.5);
-  color: rgba(249, 246, 240, 0.5);
+  background-color: var(--c-disabled);
+  color: rgba(74, 74, 58, 0.5);
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .loginLabel {
   margin-top: 1.2rem;
   font-size: 0.88rem;
-  color: rgba(249, 246, 240, 0.75);
-  font-family: 'DM Sans', sans-serif;
+  color: var(--c-text-body);
+  font-family: var(--font-sans);
+  text-align: center;
 }
 
 .loginLabel a {
-  color: #C8A96E;
+  color: var(--c-green-dark);
   font-weight: 600;
   text-decoration: none;
 }
 
 .loginLabel a:hover {
   text-decoration: underline;
+}
+
+.loginLabel a:focus-visible {
+  outline: 2px solid var(--c-gold);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (max-width: 480px) {
+  .formCard {
+    padding: 2rem 1.25rem;
+    border-radius: 12px;
+  }
+
+  .formTitle {
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .formInput {
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .formCard {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }

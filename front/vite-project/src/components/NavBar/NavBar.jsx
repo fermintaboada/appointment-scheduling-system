@@ -1,70 +1,118 @@
+import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "./NavBar.module.css";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import { UsersContext } from "../../context/UserContext";
 
+const NAV_LINKS = [
+  { to: "/", label: "Home" },
+  { to: "/misturnos", label: "Mis Turnos" },
+  { to: "/agendarturno", label: "Agendar Turno" },
+  { to: "/about", label: "About" },
+];
+
 function NavBar() {
   const { logOutUser } = useContext(UsersContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const isActive = (path) => location.pathname === path;
+  const closeMenu = () => setMenuOpen(false);
+
+  useEffect(() => { closeMenu(); }, [location.pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const handleLogout = () => {
-    Swal.fire({
-      icon: "warning",
-      title: "Tu sesión fue cerrada correctamente",
-    });
+    closeMenu();
+    Swal.fire({ icon: "warning", title: "Sesión cerrada correctamente" });
     logOutUser();
     navigate("/login");
   };
 
-  const location = useLocation();
-
   return (
-    <nav className={styles.navbar}>
+    <nav
+      className={`${styles.navbar} ${scrolled ? styles.navbarScrolled : ""}`}
+      aria-label="Navegación principal"
+    >
       <div className={styles.logo}>
-        <h2>Q-GOLF</h2>
+        <Link to="/" className={styles.logoLink} onClick={closeMenu}>Q-GOLF</Link>
       </div>
 
-      <ul className={styles.links}>
-        <li>
-          <Link
-            to="/"
-            className={`${styles.navLink} ${location.pathname === "/" ? styles.active : ""}`}
-          >
-            HOME
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/misturnos"
-            className={`${styles.navLink} ${location.pathname === "/misturnos" ? styles.active : ""}`}
-          >
-            MIS TURNOS
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/agendarturno"
-            className={`${styles.navLink} ${location.pathname === "/agendarturno" ? styles.active : ""}`}
-          >
-            AGENDAR TURNO
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/about"
-            className={`${styles.navLink} ${location.pathname === "/about" ? styles.active : ""}`}
-          >
-            ABOUT
-          </Link>
-        </li>
+      <ul className={styles.desktopLinks} role="list">
+        {NAV_LINKS.map(({ to, label }) => (
+          <li key={to}>
+            <Link
+              to={to}
+              className={`${styles.navLink} ${isActive(to) ? styles.active : ""}`}
+              aria-current={isActive(to) ? "page" : undefined}
+            >
+              {label}
+            </Link>
+          </li>
+        ))}
       </ul>
 
-      <div className={styles.logoutContainer}>
-        <button className={styles.logoutBtn} onClick={handleLogout}>
-          Logout
+      <div className={styles.desktopLogout}>
+        <button className={styles.logoutBtn} onClick={handleLogout}>Salir</button>
+      </div>
+
+      <button
+        className={`${styles.hamburger} ${menuOpen ? styles.hamburgerOpen : ""}`}
+        onClick={() => setMenuOpen((v) => !v)}
+        aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+        aria-expanded={menuOpen}
+        aria-controls="mobile-menu"
+      >
+        <span className={styles.bar} />
+        <span className={styles.bar} />
+        <span className={styles.bar} />
+      </button>
+
+      <div
+        id="mobile-menu"
+        className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ""}`}
+        aria-hidden={!menuOpen}
+      >
+        <ul className={styles.mobileLinks} role="list">
+          {NAV_LINKS.map(({ to, label }) => (
+            <li key={to}>
+              <Link
+                to={to}
+                className={`${styles.mobileNavLink} ${isActive(to) ? styles.mobileActive : ""}`}
+                aria-current={isActive(to) ? "page" : undefined}
+                tabIndex={menuOpen ? 0 : -1}
+              >
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className={styles.mobileDivider} />
+        <button
+          className={styles.mobileLogoutBtn}
+          onClick={handleLogout}
+          tabIndex={menuOpen ? 0 : -1}
+        >
+          Cerrar sesión
         </button>
       </div>
+
+      {menuOpen && (
+        <div className={styles.backdrop} onClick={closeMenu} aria-hidden="true" />
+      )}
     </nav>
   );
 }

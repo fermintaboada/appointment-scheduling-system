@@ -27,13 +27,14 @@ function MisTurnos() {
         </div>
       ) : (
         <div className={styles.containerTurns}>
-          {userAppointments?.length > 0 ? userAppointments.map((app) => (
+          {userAppointments?.length > 0 ? userAppointments.map((app, i) => (
             <Turno
               key={app.id}
               id={app.id}
               date={app.date}
               time={app.time}
               status={app.status}
+              index={i}
             />
           )) : (
             <div className={styles.emptyState}>
