@@ -47,27 +47,46 @@ function MisTurnos() {
             <div className={styles.spinner} />
             <p className={styles.loadingText}>Cargando turnos...</p>
           </div>
-        ) : (
-          <div className={styles.containerTurns}>
-            {userAppointments?.length > 0 ? userAppointments.map((app, i) => (
-              <Turno
-                key={app.id}
-                id={app.id}
-                date={app.date}
-                time={app.time}
-                status={app.status}
-                index={i}
-              />
-            )) : (
-              <div className={styles.emptyState}>
-                <p>No tenés turnos agendados aún.</p>
-                <Link to="/agendarturno" className={styles.emptyStateBtn}>
-                  Agendar un turno
-                </Link>
+        ) : (() => {
+          const today = new Date().toISOString().split("T")[0];
+          const vigentes = (userAppointments ?? [])
+            .filter(a => a.status === "active" && a.date >= today)
+            .sort((a, b) => a.date.localeCompare(b.date));
+          const previos = (userAppointments ?? [])
+            .filter(a => a.status !== "active" || a.date < today)
+            .sort((a, b) => b.date.localeCompare(a.date));
+
+          return (
+            <>
+              <div className={styles.section}>
+                <p className={styles.sectionLabel}>Turnos vigentes</p>
+                {vigentes.length > 0 ? (
+                  <div className={styles.containerTurns}>
+                    {vigentes.map((app, i) => (
+                      <Turno key={app.id} id={app.id} date={app.date} time={app.time} status={app.status} index={i} />
+                    ))}
+                  </div>
+                ) : (
+                  <div className={styles.emptyState}>
+                    <p>No tenés turnos agendados aún.</p>
+                    <Link to="/agendarturno" className={styles.emptyStateBtn}>Agendar un turno</Link>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        )}
+
+              {previos.length > 0 && (
+                <div className={styles.section}>
+                  <p className={styles.sectionLabel}>Turnos previos</p>
+                  <div className={styles.containerTurns}>
+                    {previos.map((app, i) => (
+                      <Turno key={app.id} id={app.id} date={app.date} time={app.time} status={app.status} index={i} />
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
+          );
+        })()}
       </div>
       <Footer />
     </>

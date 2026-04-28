@@ -22,6 +22,22 @@
   margin: 0;
 }
 
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.sectionLabel {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-gold);
+  text-align: center;
+  margin: 0 0 1.25rem;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+
 .containerTurns {
   display: flex;
   flex-wrap: wrap;
