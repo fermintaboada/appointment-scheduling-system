@@ -59,7 +59,7 @@ function MisTurnos() {
           return (
             <>
               <div className={styles.section}>
-                <p className={styles.sectionLabel}>Turnos vigentes</p>
+                <div className={styles.sectionLabelWrapper}><span className={styles.sectionLabel}>Turnos vigentes</span></div>
                 {vigentes.length > 0 ? (
                   <div className={styles.containerTurns}>
                     {vigentes.map((app, i) => (
@@ -76,7 +76,7 @@ function MisTurnos() {
 
               {previos.length > 0 && (
                 <div className={styles.section}>
-                  <p className={styles.sectionLabel}>Turnos previos</p>
+                  <div className={styles.sectionLabelWrapper}><span className={styles.sectionLabel}>Turnos previos</span></div>
                   <div className={styles.containerTurns}>
                     {previos.map((app, i) => (
                       <Turno key={app.id} id={app.id} date={app.date} time={app.time} status={app.status} index={i} />

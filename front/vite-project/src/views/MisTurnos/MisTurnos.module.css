@@ -26,16 +26,23 @@
   margin-bottom: 2.5rem;
 }
 
+.sectionLabelWrapper {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
 .sectionLabel {
   font-family: var(--font-sans);
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--c-gold);
-  text-align: center;
-  margin: 0 0 1.25rem;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 0.35rem 1.1rem;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
 }
 
 .containerTurns {
